@@ -3,12 +3,30 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: url("https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   padding: 2rem;
+  position: relative;
+}
+
+.login-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
 }
 
 .login-container {
-  background: white;
+  position: relative;
+  z-index: 2;
+  background: transparent;
+  backdrop-filter: blur(10px);
   border-radius: 20px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   padding: 3rem;
@@ -37,7 +55,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: #667eea;
+  color: #0a1a5e;
   text-decoration: none;
   font-weight: 500;
   margin-bottom: 1rem;
@@ -171,7 +189,7 @@
 }
 
 .divider span {
-  background: white;
+  background: rgba(255, 255, 255, 0.9);
   padding: 0 1rem;
   color: #999;
   font-size: 0.9rem;
@@ -183,9 +201,9 @@
   justify-content: center;
   gap: 0.75rem;
   padding: 1rem;
-  border: 2px solid #e0e0e0;
+  border: 2px solid rgba(224, 224, 224, 0.5);
   border-radius: 10px;
-  background: white;
+  background: rgba(255, 255, 255, 0.7);
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
