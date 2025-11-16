@@ -12,9 +12,17 @@ const Header = () => {
     navigate("/signup");
   };
 
+  const handleLogoClick = () => {
+    navigate("/");
+  };
+
   return (
     <header>
-      <div className="logo">
+      <div
+        className="logo"
+        onClick={handleLogoClick}
+        style={{ cursor: "pointer" }}
+      >
         <img
           src="https://cdn-icons-png.flaticon.com/512/3081/3081559.png"
           alt="Michel's Catering Logo"
