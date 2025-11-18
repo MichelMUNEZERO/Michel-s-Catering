@@ -14,7 +14,13 @@ const Footer = () => {
               <a href="#services">Services</a>
             </li>
             <li>
+              <a href="#team">Meet Our Team</a>
+            </li>
+            <li>
               <a href="#about">About Us</a>
+            </li>
+            <li>
+              <a href="#gallery">Gallery</a>
             </li>
             <li>
               <a href="#contact">Contact</a>
@@ -49,6 +55,12 @@ const Footer = () => {
             </a>
             <a href="#">
               <i className="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://wa.me/qr/CUQINPFSCEHSN1">
+              <i className="fab fa-whatsapp-in"></i>
+            </a>
+            <a href="#">
+              <i className="fab fa-tiktok-in"></i>
             </a>
           </div>
         </div>

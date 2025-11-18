@@ -8,7 +8,26 @@ const Hero = () => {
         <p>
           Creating unforgettable culinary experiences for your special occasions
         </p>
-        <button className="cta-button">Book Our Services</button>
+        <button
+          className="cta-button"
+          onClick={() =>
+            window.open(
+              "https://bysubmityourrquesttotheformtroughtoouremail",
+              "_blank"
+            )
+          }
+        >
+          Book Our Services
+        </button>
+        {/* // "https://bysubmityourrequesttoourwhatsappnumberdirectresponse", */}
+        <button
+          className="cta-button"
+          onClick={() =>
+            window.open("https://wa.me/qr/CUQINPFSCEHSN1", "_blank")
+          }
+        >
+          Book Our Services <i className="fab fa-whatsapp-in"></i>
+        </button>
       </div>
     </section>
   );

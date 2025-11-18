@@ -37,8 +37,14 @@ const Header = () => {
           <a href="#services" className="nav-link">
             Services
           </a>
+          <a href="#team" className="nav-link">
+            Meet Our Team
+          </a>
           <a href="#about" className="nav-link">
             About Us
+          </a>
+          <a href="#gallery" className="nav-link">
+            Gallery
           </a>
           <a href="#contact" className="nav-link">
             Contact
