@@ -31,6 +31,7 @@ header {
 .logo img {
   height: 50px;
   width: auto;
+  border-radius: 10px;
 }
 
 .logo h1 {
@@ -386,6 +387,14 @@ footer {
 
 .footer-section ul li {
   margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-section ul li i {
+  min-width: 20px;
+  color: var(--accent-color);
 }
 
 .footer-section a {
@@ -402,23 +411,35 @@ footer {
   display: flex;
   gap: 1rem;
   margin-top: 1rem;
+  flex-wrap: wrap;
 }
 
 .social-links a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
+  transition: all 0.3s ease;
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+
+.social-links a i {
   transition: all 0.3s ease;
 }
 
 .social-links a:hover {
-  background: var(--accent-color);
-  transform: translateY(-3px);
+  background-color: var(--accent-color);
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 5px 15px rgba(243, 156, 18, 0.4);
+}
+
+.social-links a:hover i {
   color: #ffffff;
+  transform: scale(1.1);
 }
 
 .copyright {

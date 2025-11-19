@@ -31,10 +31,16 @@ const Footer = () => {
           <h4>Contact Information</h4>
           <ul>
             <li>
-              <i className="fas fa-envelope"></i> michelmunezero25@gmail.com
+              <i className="fas fa-envelope"></i> delishkamuta@gmail.com
             </li>
             <li>
-              <i className="fas fa-phone"></i> +250 791 268 906
+              <i className="fas fa-envelope"></i> fridamutesi@gmail.com
+            </li>
+            <li>
+              <i className="fas fa-phone"></i> +250788301848
+            </li>
+            <li>
+              <i className="fas fa-phone"></i> +250788309472
             </li>
             <li>
               <i className="fas fa-map-marker-alt"></i> Kigali, Rwanda
@@ -44,23 +50,47 @@ const Footer = () => {
         <div className="footer-section">
           <h4>Follow Us</h4>
           <div className="social-links">
-            <a href="#">
+            <a
+              href="https://www.facebook.com/profile.php?id=61568564767283"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className="fab fa-facebook-f"></i>
             </a>
-            <a href="#">
+            <a
+              href="https://www.instagram.com/kamuta_ltd?igsh=eGFlYnAzY3hneXVl"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className="fab fa-instagram"></i>
             </a>
-            <a href="#">
+            <a
+              href="https://x.com/KamutaLtd?t=mEMRo0_6QsFNGqRvOC84Rw&s=09"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className="fab fa-twitter"></i>
             </a>
-            <a href="#">
+            <a
+              href="https://www.linkedin.com/company/kamuta-ltd/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i className="fab fa-linkedin-in"></i>
             </a>
-            <a href="https://wa.me/qr/CUQINPFSCEHSN1">
-              <i className="fab fa-whatsapp-in"></i>
+            <a
+              href="https://wa.me/qr/CUQINPFSCEHSN1"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fab fa-whatsapp"></i>
             </a>
-            <a href="#">
-              <i className="fab fa-tiktok-in"></i>
+            <a
+              href="https://www.tiktok.com/@kamuta_ltd?_t=ZM-8sZ9j8wkRmq&_r=1"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fab fa-tiktok"></i>
             </a>
           </div>
         </div>
@@ -74,7 +104,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="copyright">
-        <p>&copy; 2024 Michel's Catering Services. All Rights Reserved.</p>
+        <p>&copy; 2024 Kamuta ltd's Services. All Rights Reserved.</p>
       </div>
     </footer>
   );

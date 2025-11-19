@@ -23,11 +23,8 @@ const Header = () => {
         onClick={handleLogoClick}
         style={{ cursor: "pointer" }}
       >
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/3081/3081559.png"
-          alt="Michel's Catering Logo"
-        />
-        <h1>Michel's Catering</h1>
+        <img src="/src/Photo/KAMUTA LTD  LOGO.png" alt="Kamuta Ltd's Logo" />
+        <h1>KAMUTA LTD</h1>
       </div>
       <div className="header-container">
         <nav className="main-nav">
