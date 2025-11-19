@@ -420,8 +420,6 @@ header {
   animation: slideDown 0.3s ease;
   max-width: 500px;
 }
-  animation: slideDown 0.3s ease;
-}
 
 .dark-mode .map-preview {
   background: #2a2a2a;
@@ -469,29 +467,6 @@ header {
 .close-map-btn:hover {
   color: var(--secondary-color);
   transform: rotate(90deg);
-}
-
-.open-maps-btn {
-  width: 100%;
-  margin-top: 1rem;
-  padding: 0.75rem;
-  background-color: var(--accent-color);
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  transition: all 0.3s ease;
-}
-
-.open-maps-btn:hover {
-  background-color: #e08e0b;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(243, 156, 18, 0.4);
 }
 
 .clickable-location {
