@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
 import Services from "../components/Services";
@@ -9,14 +9,20 @@ import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 
 const Home = () => {
+  const [showGallery, setShowGallery] = useState(false);
+
+  const toggleGallery = () => {
+    setShowGallery(!showGallery);
+  };
+
   return (
     <>
-      <Header />
+      <Header toggleGallery={toggleGallery} />
       <Hero />
       <Services />
       <Team />
       <About />
-      <Gallery />
+      {showGallery && <Gallery onClose={() => setShowGallery(false)} />}
       <Contact />
       <Footer />
     </>

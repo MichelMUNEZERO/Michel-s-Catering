@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ toggleGallery }) => {
   const navigate = useNavigate();
 
   const handleLogin = () => {
@@ -14,6 +14,13 @@ const Header = () => {
 
   const handleLogoClick = () => {
     navigate("/");
+  };
+
+  const handleGalleryClick = (e) => {
+    e.preventDefault();
+    if (toggleGallery) {
+      toggleGallery();
+    }
   };
 
   return (
@@ -40,7 +47,7 @@ const Header = () => {
           <a href="#about" className="nav-link">
             About Us
           </a>
-          <a href="#gallery" className="nav-link">
+          <a href="#gallery" className="nav-link" onClick={handleGalleryClick}>
             Gallery
           </a>
           <a href="#contact" className="nav-link">
