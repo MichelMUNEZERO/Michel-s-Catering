@@ -47,6 +47,7 @@
   color: #b0b0b0;
 }
 
+.dark-mode .about-text h3,
 .dark-mode .info-item h3 {
   color: var(--text-color);
 }
@@ -120,7 +121,7 @@ header {
 }
 
 .nav-link:hover,
-.auth-nav button:hover {
+.auth-nav button:hover:not(.theme-toggle-btn) {
   color: var(--light-bg);
   background-color: var(--accent-color);
   transform: translateY(-2px);
@@ -152,6 +153,7 @@ header {
   align-items: center;
   justify-content: center;
   min-width: 50px;
+  text-decoration: none;
 }
 
 .theme-toggle-btn:hover {
@@ -369,11 +371,14 @@ header {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
+  position: relative;
+  z-index: 1;
 }
 
 .contact-info {
   display: grid;
   gap: 2rem;
+  position: relative;
 }
 
 .info-item {
@@ -383,11 +388,120 @@ header {
   transition: all 0.3s ease;
   padding: 1rem;
   border-radius: 5px;
+  overflow: visible;
 }
 
 .info-item:hover {
   background-color: rgba(243, 156, 18, 0.1);
   transform: translateX(5px);
+}
+
+.clickable-location:hover {
+  background-color: rgba(243, 156, 18, 0.2);
+  transform: translateX(10px) scale(1.02);
+  box-shadow: 0 4px 10px rgba(243, 156, 18, 0.3);
+}
+
+.clickable-location:active {
+  transform: translateX(8px) scale(0.98);
+}
+
+.map-preview {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  margin-top: 1rem;
+  z-index: 1000;
+  animation: slideDown 0.3s ease;
+  max-width: 500px;
+}
+  animation: slideDown 0.3s ease;
+}
+
+.dark-mode .map-preview {
+  background: #2a2a2a;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.map-preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.map-preview-header h4 {
+  color: var(--primary-color);
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.dark-mode .map-preview-header h4 {
+  color: var(--text-color);
+}
+
+.close-map-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #999;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.close-map-btn:hover {
+  color: var(--secondary-color);
+  transform: rotate(90deg);
+}
+
+.open-maps-btn {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.open-maps-btn:hover {
+  background-color: #e08e0b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(243, 156, 18, 0.4);
+}
+
+.clickable-location {
+  position: relative;
+  z-index: 10;
+}
+
+.contact-section {
+  position: relative;
+  overflow: visible;
 }
 
 .info-item i {

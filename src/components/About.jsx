@@ -17,9 +17,9 @@ const About = () => {
         <div className="about-text">
           <h3>Our Story</h3>
           <p>
-            Founded in 2024, Michel's Catering Services has been serving Kigali
-            with exceptional culinary experiences. Our journey began with a
-            simple mission: to provide high-quality, delicious food for every
+            Founded in 2024, Kamuta Ltd's Catering Services has been serving
+            Kigali with exceptional culinary experiences. Our journey began with
+            a simple mission: to provide high-quality, delicious food for every
             occasion.
           </p>
           <h3>Our Mission</h3>
