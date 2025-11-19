@@ -1,6 +1,22 @@
 import React from "react";
 
 const Hero = () => {
+  const handleEmailClick = () => {
+    // Scroll to contact form
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleWhatsApp = () => {
+    const message = "Hello! I'd like to book your catering services.";
+    const url = `https://api.whatsapp.com/send?phone=250788301848&text=${encodeURIComponent(
+      message
+    )}`;
+    window.open(url, "_blank");
+  };
+
   return (
     <section className="hero-section" id="home">
       <div className="hero-content">
@@ -8,26 +24,20 @@ const Hero = () => {
         <p>
           Creating unforgettable culinary experiences for your special occasions
         </p>
-        <button
-          className="cta-button"
-          onClick={() =>
-            window.open(
-              "https://bysubmityourrquesttotheformtroughtoouremail",
-              "_blank"
-            )
-          }
-        >
-          Book Our Services
-        </button>
-        {/* // "https://bysubmityourrequesttoourwhatsappnumberdirectresponse", */}
-        <button
-          className="cta-button"
-          onClick={() =>
-            window.open("https://wa.me/qr/CUQINPFSCEHSN1", "_blank")
-          }
-        >
-          Book Our Services <i className="fab fa-whatsapp-in"></i>
-        </button>
+        <div className="hero-buttons">
+          <button
+            className="cta-button hero-email-btn"
+            onClick={handleEmailClick}
+          >
+            <i className="fas fa-envelope"></i> Book via Email
+          </button>
+          <button
+            className="cta-button hero-whatsapp-btn"
+            onClick={handleWhatsApp}
+          >
+            <i className="fab fa-whatsapp"></i> Book via WhatsApp
+          </button>
+        </div>
       </div>
     </section>
   );

@@ -24,7 +24,7 @@ const Home = () => {
       <About />
       {showGallery && <Gallery onClose={() => setShowGallery(false)} />}
       <Contact />
-      <Footer />
+      <Footer toggleGallery={toggleGallery} />
     </>
   );
 };

@@ -1,8 +1,22 @@
 import React from "react";
 
-const Footer = () => {
+const Footer = ({ toggleGallery }) => {
+  const handleGalleryClick = (e) => {
+    e.preventDefault();
+    if (toggleGallery) {
+      toggleGallery();
+    }
+  };
+
   return (
     <footer>
+      {/* 
+        Website Designed & Developed by Michel Munezero - Frontend Developer
+        Email: michelmunezero25@gmail.com
+        LinkedIn: www.linkedin.com/in/michelmunezero
+        Instagram: @lehcimunna
+        X (Twitter): @lehcimunnaa
+      */}
       <div className="footer-content">
         <div className="footer-section">
           <h4>Quick Links</h4>
@@ -20,7 +34,9 @@ const Footer = () => {
               <a href="#about">About Us</a>
             </li>
             <li>
-              <a href="#gallery">Gallery</a>
+              <a href="#gallery" onClick={handleGalleryClick}>
+                Gallery
+              </a>
             </li>
             <li>
               <a href="#contact">Contact</a>
@@ -104,7 +120,10 @@ const Footer = () => {
         </div>
       </div>
       <div className="copyright">
-        <p>&copy; 2024 Kamuta ltd's Services. All Rights Reserved.</p>
+        <p>
+          Copyright &copy; 2015 Kamuta Ltd. All Rights Reserved. Designed By
+          Michel MUNEZERO
+        </p>
       </div>
     </footer>
   );

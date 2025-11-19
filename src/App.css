@@ -138,6 +138,29 @@ header {
   margin-bottom: 2rem;
 }
 
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-email-btn {
+  background-color: var(--secondary-color);
+}
+
+.hero-email-btn:hover {
+  background-color: #c0392b;
+}
+
+.hero-whatsapp-btn {
+  background-color: #25d366;
+}
+
+.hero-whatsapp-btn:hover {
+  background-color: #1ea952;
+}
+
 .section-title {
   text-align: center;
   margin-bottom: 3rem;
@@ -348,12 +371,42 @@ header {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
 }
 
 .cta-button:hover {
   background-color: #c0392b;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.contact-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.submit-email-btn {
+  background-color: var(--secondary-color);
+  flex: 1;
+  min-width: 200px;
+}
+
+.submit-email-btn:hover {
+  background-color: #c0392b;
+}
+
+.whatsapp-btn {
+  background-color: #25d366;
+  flex: 1;
+  min-width: 200px;
+}
+
+.whatsapp-btn:hover {
+  background-color: #1ea952;
 }
 
 footer {
