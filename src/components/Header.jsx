@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const Header = ({ toggleGallery }) => {
+const Header = ({ toggleGallery, darkMode, toggleTheme }) => {
   const navigate = useNavigate();
 
   const handleLogin = () => {
@@ -56,6 +56,13 @@ const Header = ({ toggleGallery }) => {
         </nav>
       </div>
       <div className="auth-nav">
+        <button
+          className="theme-toggle-btn"
+          onClick={toggleTheme}
+          aria-label="Toggle dark mode"
+        >
+          {darkMode ? "☀️" : "🌙"}
+        </button>
         <button className="login-btn" onClick={handleLogin}>
           Log in
         </button>

@@ -7,6 +7,62 @@
   --hover-color: #3498db;
 }
 
+/* Dark mode variables */
+.dark-mode {
+  --primary-color: #1e2936;
+  --text-color: #e0e0e0;
+  --light-bg: #2a2a2a;
+}
+
+.dark-mode .services-section,
+.dark-mode .about-section,
+.dark-mode .contact-section {
+  background-color: #1a1a1a;
+}
+
+.dark-mode .team-section {
+  background-color: #2a2a2a;
+}
+
+.dark-mode .Cards-contain,
+.dark-mode .team-card {
+  background-color: #2a2a2a;
+  color: var(--text-color);
+}
+
+.dark-mode .card-content h2,
+.dark-mode .card-content p,
+.dark-mode .team-info h3 {
+  color: var(--text-color);
+}
+
+.dark-mode .section-title h2 {
+  color: var(--text-color);
+}
+
+.dark-mode .section-title p,
+.dark-mode .about-text p,
+.dark-mode .about-text ul li,
+.dark-mode .info-item p {
+  color: #b0b0b0;
+}
+
+.dark-mode .info-item h3 {
+  color: var(--text-color);
+}
+
+.dark-mode .form-group input,
+.dark-mode .form-group textarea {
+  background-color: #2a2a2a;
+  color: var(--text-color);
+  border-color: #444;
+}
+
+.dark-mode .form-group input::placeholder,
+.dark-mode .form-group textarea::placeholder {
+  color: #888;
+}
+
 header {
   background-color: var(--primary-color);
   padding: 1rem 3rem;
@@ -74,6 +130,7 @@ header {
 .auth-nav {
   display: flex;
   gap: 1rem;
+  align-items: center;
 }
 
 .auth-nav button {
@@ -83,6 +140,25 @@ header {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+}
+
+.theme-toggle-btn {
+  background-color: transparent;
+  color: white;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem !important;
+  border: 2px solid white !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 50px;
+}
+
+.theme-toggle-btn:hover {
+  background-color: var(--accent-color);
+  transform: scale(1.1);
+  border-color: var(--accent-color) !important;
+  text-decoration: none;
 }
 
 .login-btn {

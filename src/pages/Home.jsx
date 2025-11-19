@@ -8,7 +8,7 @@ import Gallery from "../components/Gallery";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 
-const Home = () => {
+const Home = ({ darkMode, toggleTheme }) => {
   const [showGallery, setShowGallery] = useState(false);
 
   const toggleGallery = () => {
@@ -17,7 +17,11 @@ const Home = () => {
 
   return (
     <>
-      <Header toggleGallery={toggleGallery} />
+      <Header
+        toggleGallery={toggleGallery}
+        darkMode={darkMode}
+        toggleTheme={toggleTheme}
+      />
       <Hero />
       <Services />
       <Team />
