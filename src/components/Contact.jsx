@@ -103,11 +103,6 @@ const Contact = () => {
             <h3>Location</h3>
             <p>KK61st Kn5rd kigali</p>
             <p>Kigali, Rwanda</p>
-            <small
-              style={{ color: "var(--accent-color)", marginTop: "0.5rem" }}
-            >
-              📍 Hover to preview or click to view on Google Maps
-            </small>
 
             {showMap && (
               <div
