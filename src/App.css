@@ -198,6 +198,10 @@ header {
   width: 100%;
   z-index: 1000;
 }
+.hero-title {
+  font-size: 1000px;
+  font-weight: bold;
+}
 
 .hero-section::before {
   content: "";

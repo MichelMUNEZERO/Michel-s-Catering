@@ -65,7 +65,7 @@ const Contact = () => {
   const handleWhatsApp = () => {
     // WhatsApp number (use international format without + or spaces)
     const message = "Hello! I'm interested in your catering services.";
-    const url = `https://api.whatsapp.com/send?phone=250788301848&text=${encodeURIComponent(
+    const url = `https://api.whatsapp.com/send?phone=250788309472&text=${encodeURIComponent(
       message
     )}`;
 
