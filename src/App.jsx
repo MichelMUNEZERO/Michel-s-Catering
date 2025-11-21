@@ -4,6 +4,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import ReviewsPage from "./pages/ReviewsPage";
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -35,6 +36,12 @@ function App() {
           />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route
+            path="/reviews"
+            element={
+              <ReviewsPage darkMode={darkMode} toggleTheme={toggleTheme} />
+            }
+          />
         </Routes>
       </div>
     </Router>

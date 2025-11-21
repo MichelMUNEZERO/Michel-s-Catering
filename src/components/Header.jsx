@@ -47,6 +47,7 @@ const Header = ({ toggleGallery, darkMode, toggleTheme }) => {
           <a href="#about" className="nav-link">
             About Us
           </a>
+
           <a href="#gallery" className="nav-link" onClick={handleGalleryClick}>
             Gallery
           </a>

@@ -34,6 +34,9 @@ const Footer = ({ toggleGallery }) => {
               <a href="#about">About Us</a>
             </li>
             <li>
+              <a href="/reviews">Reviews</a>
+            </li>
+            <li>
               <a href="#gallery" onClick={handleGalleryClick}>
                 Gallery
               </a>
