@@ -4,6 +4,7 @@ import Hero from "../components/Hero";
 import Services from "../components/Services";
 import Team from "../components/Team";
 import About from "../components/About";
+import Clients from "../components/Clients";
 import Reviews from "../components/Reviews";
 import Gallery from "../components/Gallery";
 import Contact from "../components/Contact";
@@ -27,6 +28,7 @@ const Home = ({ darkMode, toggleTheme }) => {
       <Services />
       <Team />
       <About />
+      <Clients />
       {showGallery && <Gallery onClose={() => setShowGallery(false)} />}
       <Contact />
       <Footer toggleGallery={toggleGallery} />
