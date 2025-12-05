@@ -4,27 +4,27 @@ import "../Clients.css";
 const Clients = () => {
   const clientLogos = [
     {
-      src: "/src/Photo/Our client's Logo/Discovery School logo.jpg",
+      src: "/Photo/Our client's Logo/Discovery School logo.jpg",
       alt: "Discovery School",
     },
     {
-      src: "/src/Photo/Our client's Logo/logo FAO.png",
+      src: "/Photo/Our client's Logo/logo FAO.png",
       alt: "FAO",
     },
     {
-      src: "/src/Photo/Our client's Logo/LOGO-PAM-300x151.jpg",
+      src: "/Photo/Our client's Logo/LOGO-PAM-300x151.jpg",
       alt: "PAM",
     },
     {
-      src: "/src/Photo/Our client's Logo/portrait_ur_logo.jpg",
+      src: "/Photo/Our client's Logo/portrait_ur_logo.jpg",
       alt: "University of Rwanda",
     },
     {
-      src: "/src/Photo/Our client's Logo/REG LOGO.png",
+      src: "/Photo/Our client's Logo/REG LOGO.png",
       alt: "REG",
     },
     {
-      src: "/src/Photo/Our client's Logo/UNDP LOGO.png",
+      src: "/Photo/Our client's Logo/UNDP LOGO.png",
       alt: "UNDP",
     },
   ];

@@ -13,7 +13,7 @@ const ReviewsPage = ({ darkMode, toggleTheme }) => {
           onClick={() => navigate("/")}
           style={{ cursor: "pointer" }}
         >
-          <img src="/src/Photo/KAMUTA LTD  LOGO.png" alt="Kamuta Ltd's Logo" />
+          <img src="/Photo/KAMUTA LTD  LOGO.png" alt="Kamuta Ltd's Logo" />
           <h1>KAMUTA LTD</h1>
         </div>
         <div className="header-container">
@@ -49,12 +49,6 @@ const ReviewsPage = ({ darkMode, toggleTheme }) => {
             aria-label="Toggle dark mode"
           >
             {darkMode ? "☀️" : "🌙"}
-          </button>
-          <button className="login-btn" onClick={() => navigate("/login")}>
-            Log in
-          </button>
-          <button className="signup-btn" onClick={() => navigate("/signup")}>
-            Sign up
           </button>
         </div>
       </header>

@@ -22,7 +22,7 @@ const Header = ({ toggleGallery, darkMode, toggleTheme }) => {
         onClick={handleLogoClick}
         style={{ cursor: "pointer" }}
       >
-        <img src="/src/Photo/KAMUTA LTD  LOGO.png" alt="Kamuta Ltd's Logo" />
+        <img src="/Photo/KAMUTA LTD  LOGO.png" alt="Kamuta Ltd's Logo" />
         <h1>KAMUTA LTD</h1>
       </div>
       <div className="header-container">

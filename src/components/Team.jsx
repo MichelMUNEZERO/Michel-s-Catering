@@ -6,25 +6,25 @@ const Team = () => {
       name: "waiters",
       role: "Service Staff",
       image:
-        "/src/Photo/Photo's Team/WhatsApp Image 2025-11-18 at 11.18.28_f9dc515c.jpg",
+        "/Photo/Photo's Team/WhatsApp Image 2025-11-18 at 11.18.28_f9dc515c.jpg",
     },
     {
       name: "Mind Master",
       role: "Owner",
       image:
-        "/src/Photo/Photo's Team/WhatsApp Image 2025-11-18 at 11.18.42_82541c8f.jpg",
+        "/Photo/Photo's Team/WhatsApp Image 2025-11-18 at 11.18.42_82541c8f.jpg",
     },
     {
       name: "Chef",
       role: "Head Chef",
       image:
-        "/src/Photo/Photo's Team/WhatsApp Image 2025-11-18 at 11.18.42_885f654a.jpg",
+        "/Photo/Photo's Team/WhatsApp Image 2025-11-18 at 11.18.42_885f654a.jpg",
     },
     {
       name: "Cleaning Staff",
       role: "Janitorial Team",
       image:
-        "/src/Photo/Photo's Team/WhatsApp Image 2025-11-18 at 11.18.43_9960b09c.jpg",
+        "/Photo/Photo's Team/WhatsApp Image 2025-11-18 at 11.18.43_9960b09c.jpg",
     },
   ];
 

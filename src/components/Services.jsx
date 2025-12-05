@@ -4,13 +4,13 @@ const Services = () => {
   const services = [
     {
       title: "Delivery Service",
-      image: "/src/Photo/Service's photo/Delivery Services photo.jpg",
+      image: "/Photo/Service's photo/Delivery Services photo.jpg",
       description:
         "Fresh, delicious meals delivered right to your doorstep. Perfect for corporate events and private gatherings.",
     },
     {
       title: "Wedding Catering",
-      image: "/src/Photo/Service's photo/Wedding Catering.jpg",
+      image: "/Photo/Service's photo/Wedding Catering.jpg",
       description:
         "Make your special day unforgettable with our exquisite wedding catering services.",
     },
