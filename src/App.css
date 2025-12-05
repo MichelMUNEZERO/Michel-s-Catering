@@ -163,17 +163,6 @@ header {
   text-decoration: none;
 }
 
-.login-btn {
-  background-color: transparent;
-  color: white;
-  border: 2px solid white !important;
-}
-
-.signup-btn {
-  background-color: transparent;
-  color: white;
-}
-
 .hero-section {
   height: 100vh;
   background: url("https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
@@ -199,7 +188,7 @@ header {
   z-index: 1000;
 }
 .hero-title {
-  font-size: 1000px;
+  font-size: 3.5rem;
   font-weight: bold;
 }
 
@@ -1337,5 +1326,105 @@ footer {
 
   .rating-input {
     justify-content: center;
+  }
+}
+
+/* 404 Not Found Page Styles */
+.not-found-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--secondary-color) 100%
+  );
+  padding: 2rem;
+}
+
+.not-found-content {
+  text-align: center;
+  color: white;
+  max-width: 600px;
+}
+
+.not-found-icon {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+
+.not-found-icon i {
+  animation: bounce 2s infinite;
+}
+
+.not-found-title {
+  font-size: 8rem;
+  font-weight: bold;
+  margin: 0;
+  line-height: 1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.not-found-subtitle {
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+
+.not-found-text {
+  font-size: 1.1rem;
+  margin: 1.5rem 0 2rem;
+  opacity: 0.9;
+}
+
+.not-found-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.not-found-buttons .cta-button {
+  text-decoration: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+}
+
+.not-found-buttons .cta-button.secondary {
+  background: transparent;
+  border: 2px solid white;
+}
+
+.not-found-buttons .cta-button.secondary:hover {
+  background: white;
+  color: var(--primary-color);
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@media (max-width: 768px) {
+  .not-found-title {
+    font-size: 5rem;
+  }
+
+  .not-found-subtitle {
+    font-size: 1.5rem;
+  }
+
+  .not-found-buttons {
+    flex-direction: column;
+  }
+
+  .not-found-buttons .cta-button {
+    width: 100%;
   }
 }

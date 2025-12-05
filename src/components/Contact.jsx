@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 const Contact = () => {
   const [showMap, setShowMap] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -18,6 +19,7 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
     try {
       // Send to all three email addresses
@@ -59,6 +61,8 @@ const Contact = () => {
       alert(
         "❌ Failed to send message. Please try WhatsApp or call us directly."
       );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -178,8 +182,17 @@ const Contact = () => {
             ></textarea>
           </div>
           <div className="contact-buttons">
-            <button type="submit" className="cta-button submit-email-btn">
-              <i className="fas fa-envelope"></i> Send via Email
+            <button
+              type="submit"
+              className="cta-button submit-email-btn"
+              disabled={isSubmitting}
+            >
+              <i
+                className={
+                  isSubmitting ? "fas fa-spinner fa-spin" : "fas fa-envelope"
+                }
+              ></i>
+              {isSubmitting ? " Sending..." : " Send via Email"}
             </button>
             <button
               type="button"

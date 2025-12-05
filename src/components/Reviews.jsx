@@ -57,6 +57,7 @@ const Reviews = () => {
 
   const [showForm, setShowForm] = useState(false);
   const [adminMode, setAdminMode] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -108,32 +109,37 @@ const Reviews = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
-    const newReview = {
-      id: reviews.length + 1,
-      name: formData.name,
-      rating: parseInt(formData.rating),
-      date: new Date().toISOString().split("T")[0],
-      comment: formData.comment,
-      verified: false,
-    };
+    // Simulate submission delay
+    setTimeout(() => {
+      const newReview = {
+        id: reviews.length + 1,
+        name: formData.name,
+        rating: parseInt(formData.rating),
+        date: new Date().toISOString().split("T")[0],
+        comment: formData.comment,
+        verified: false,
+      };
 
-    setReviews([newReview, ...reviews]);
+      setReviews([newReview, ...reviews]);
 
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      rating: 5,
-      comment: "",
-    });
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        rating: 5,
+        comment: "",
+      });
 
-    setShowForm(false);
+      setShowForm(false);
+      setIsSubmitting(false);
 
-    // Show success message
-    alert(
-      "Thank you for your review! Your review has been submitted and is pending verification."
-    );
+      // Show success message
+      alert(
+        "Thank you for your review! Your review has been submitted and is pending verification."
+      );
+    }, 500);
   };
 
   const renderStars = (rating) => {
@@ -240,7 +246,7 @@ const Reviews = () => {
                         type="radio"
                         name="rating"
                         value={star}
-                        checked={formData.rating === star.toString()}
+                        checked={parseInt(formData.rating) === star}
                         onChange={handleInputChange}
                       />
                       <i className="fas fa-star"></i>
@@ -266,9 +272,19 @@ const Reviews = () => {
                 ></textarea>
               </div>
 
-              <button type="submit" className="cta-button submit-review-btn">
-                <i className="fas fa-paper-plane"></i>
-                Submit Review
+              <button
+                type="submit"
+                className="cta-button submit-review-btn"
+                disabled={isSubmitting}
+              >
+                <i
+                  className={
+                    isSubmitting
+                      ? "fas fa-spinner fa-spin"
+                      : "fas fa-paper-plane"
+                  }
+                ></i>
+                {isSubmitting ? " Submitting..." : " Submit Review"}
               </button>
             </form>
           </div>

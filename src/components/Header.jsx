@@ -4,14 +4,6 @@ import { useNavigate } from "react-router-dom";
 const Header = ({ toggleGallery, darkMode, toggleTheme }) => {
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    navigate("/login");
-  };
-
-  const handleSignup = () => {
-    navigate("/signup");
-  };
-
   const handleLogoClick = () => {
     navigate("/");
   };
@@ -63,12 +55,6 @@ const Header = ({ toggleGallery, darkMode, toggleTheme }) => {
           aria-label="Toggle dark mode"
         >
           {darkMode ? "☀️" : "🌙"}
-        </button>
-        <button className="login-btn" onClick={handleLogin}>
-          Log in
-        </button>
-        <button className="signup-btn" onClick={handleSignup}>
-          Sign up
         </button>
       </div>
     </header>
