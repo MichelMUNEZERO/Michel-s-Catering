@@ -99,11 +99,16 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .clients-section {
-    padding: 60px 20px;
+    padding: 60px 15px;
+    min-height: 50vh;
+  }
+
+  .clients-section .section-title {
+    margin-bottom: 40px;
   }
 
   .clients-section .section-title h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .clients-section .section-title p {
@@ -112,20 +117,34 @@
 
   .scroller-container {
     height: 300px;
+    max-width: 100%;
   }
 
   .clients-section .card {
+    flex: 0 0 50%;
     height: 300px;
   }
 
   .clients-section .card-image {
     padding: 20px;
   }
+
+  .scroller {
+    animation: slide 15s linear infinite;
+  }
 }
 
 @media (max-width: 480px) {
+  .clients-section {
+    padding: 50px 10px;
+  }
+
   .clients-section .section-title h2 {
     font-size: 1.5rem;
+  }
+
+  .clients-section .section-title p {
+    font-size: 0.9rem;
   }
 
   .scroller-container {
@@ -133,6 +152,7 @@
   }
 
   .clients-section .card {
+    flex: 0 0 100%;
     height: 250px;
     padding: 0 5px;
   }
@@ -144,5 +164,9 @@
   .scroller-container::before,
   .scroller-container::after {
     width: 50px;
+  }
+
+  .scroller {
+    animation: slide 12s linear infinite;
   }
 }
