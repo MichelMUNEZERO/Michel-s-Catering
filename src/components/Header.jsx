@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { IoMenuSharp } from "react-icons/io5";
+import { IoMenuSharp, IoCloseCircleOutline } from "react-icons/io5";
 import { CgDarkMode } from "react-icons/cg";
 import { FaHome } from "react-icons/fa";
 import { FcAbout } from "react-icons/fc";
@@ -60,10 +60,19 @@ const Header = ({ toggleGallery, darkMode, toggleTheme }) => {
       </div>
       <div className="header-container">
         <nav className={`main-nav ${mobileMenuOpen ? "mobile-nav-open" : ""}`}>
-          <a href="#home" className="nav-link" onClick={handleNavClick}>
-            <FaHome className="mobile-icon" />
-            Home
-          </a>
+          <div className="mobile-menu-header">
+            <a href="#home" className="nav-link" onClick={handleNavClick}>
+              <FaHome className="mobile-icon" />
+              Home
+            </a>
+            <button
+              className="mobile-close-btn"
+              onClick={toggleMobileMenu}
+              aria-label="Close mobile menu"
+            >
+              <IoCloseCircleOutline />
+            </button>
+          </div>
           <a href="#services" className="nav-link" onClick={handleNavClick}>
             <FaServicestack className="mobile-icon" />
             Services

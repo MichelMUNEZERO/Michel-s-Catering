@@ -135,6 +135,11 @@ header {
   display: none;
 }
 
+/* Hide close button on desktop */
+.mobile-close-btn {
+  display: none;
+}
+
 .nav-link:hover,
 .auth-nav button:hover:not(.theme-toggle-btn) {
   color: var(--light-bg);
@@ -1426,8 +1431,8 @@ footer {
     position: fixed;
     top: 80px;
     left: 0;
-    right: 0;
-    width: 100%;
+    right: 50%;
+    width: 50%;
     max-width: 100%;
     background-color: var(--primary-color);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -1458,6 +1463,37 @@ footer {
   .mobile-icon {
     display: inline-block;
     font-size: 1.2rem;
+  }
+
+  /* Mobile menu header with Home link and close button */
+  .mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .mobile-menu-header .nav-link {
+    flex: 1;
+    border-bottom: none;
+  }
+
+  .mobile-close-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .mobile-close-btn:hover {
+    color: var(--accent-color);
+    transform: scale(1.1);
   }
 
   .nav-link:hover {
