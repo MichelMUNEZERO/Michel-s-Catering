@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoMenuSharp } from "react-icons/io5";
+import { CgDarkMode } from "react-icons/cg";
 
 const Header = ({ toggleGallery, darkMode, toggleTheme }) => {
   const navigate = useNavigate();
@@ -79,7 +80,7 @@ const Header = ({ toggleGallery, darkMode, toggleTheme }) => {
           onClick={toggleTheme}
           aria-label="Toggle dark mode"
         >
-          {darkMode ? "☀️" : "🌙"}
+          <CgDarkMode />
         </button>
         <button
           className="mobile-menu-toggle"

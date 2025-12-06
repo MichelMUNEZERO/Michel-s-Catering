@@ -163,11 +163,20 @@ header {
   text-decoration: none;
 }
 
+.theme-toggle-btn svg {
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
 .theme-toggle-btn:hover {
   background-color: var(--accent-color);
   transform: scale(1.1);
   border-color: var(--accent-color) !important;
   text-decoration: none;
+}
+
+.theme-toggle-btn:hover svg {
+  transform: rotate(180deg);
 }
 
 .hero-section {
@@ -1286,11 +1295,6 @@ footer {
   font-weight: 300;
   cursor: pointer;
   transition: all 0.3s ease;
-}
-
-.close-lightbox:hover {
-  color: var(--accent-color);
-  transform: rotate(90deg);
 }
 
 /* Hamburger menu button - hidden by default on desktop */
