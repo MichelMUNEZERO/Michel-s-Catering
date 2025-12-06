@@ -125,6 +125,14 @@ header {
   position: relative;
   padding: 0.5rem 1rem;
   border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Hide mobile icons by default (desktop view) */
+.mobile-icon {
+  display: none;
 }
 
 .nav-link:hover,
@@ -1444,6 +1452,12 @@ footer {
     border-radius: 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     text-align: left;
+  }
+
+  /* Show mobile icons on mobile devices */
+  .mobile-icon {
+    display: inline-block;
+    font-size: 1.2rem;
   }
 
   .nav-link:hover {

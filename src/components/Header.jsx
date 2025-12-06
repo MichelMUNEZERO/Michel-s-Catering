@@ -2,6 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoMenuSharp } from "react-icons/io5";
 import { CgDarkMode } from "react-icons/cg";
+import { FaHome } from "react-icons/fa";
+import { FcAbout } from "react-icons/fc";
+import { RiTeamLine } from "react-icons/ri";
+import { IoIosContact } from "react-icons/io";
+import { FaServicestack } from "react-icons/fa6";
+import { GrGallery } from "react-icons/gr";
 
 const Header = ({ toggleGallery, darkMode, toggleTheme }) => {
   const navigate = useNavigate();
@@ -55,21 +61,27 @@ const Header = ({ toggleGallery, darkMode, toggleTheme }) => {
       <div className="header-container">
         <nav className={`main-nav ${mobileMenuOpen ? "mobile-nav-open" : ""}`}>
           <a href="#home" className="nav-link" onClick={handleNavClick}>
+            <FaHome className="mobile-icon" />
             Home
           </a>
           <a href="#services" className="nav-link" onClick={handleNavClick}>
+            <FaServicestack className="mobile-icon" />
             Services
           </a>
           <a href="#team" className="nav-link" onClick={handleNavClick}>
+            <RiTeamLine className="mobile-icon" />
             Meet Our Team
           </a>
           <a href="#about" className="nav-link" onClick={handleNavClick}>
+            <FcAbout className="mobile-icon" />
             About Us
           </a>
           <a href="#gallery" className="nav-link" onClick={handleGalleryClick}>
+            <GrGallery className="mobile-icon" />
             Gallery
           </a>
           <a href="#contact" className="nav-link" onClick={handleNavClick}>
+            <IoIosContact className="mobile-icon" />
             Contact
           </a>
         </nav>
