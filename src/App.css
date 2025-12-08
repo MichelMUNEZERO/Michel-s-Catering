@@ -1337,11 +1337,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(
-    135deg,
-    var(--primary-color) 0%,
-    var(--secondary-color) 100%
-  );
+  background: --primary-color;
   padding: 2rem;
 }
 
@@ -1372,35 +1368,6 @@ footer {
 .not-found-subtitle {
   font-size: 2rem;
   margin: 1rem 0;
-}
-
-.not-found-text {
-  font-size: 1.1rem;
-  margin: 1.5rem 0 2rem;
-  opacity: 0.9;
-}
-
-.not-found-buttons {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.not-found-buttons .cta-button {
-  text-decoration: none;
-  padding: 1rem 2rem;
-  font-size: 1rem;
-}
-
-.not-found-buttons .cta-button.secondary {
-  background: transparent;
-  border: 2px solid white;
-}
-
-.not-found-buttons .cta-button.secondary:hover {
-  background: white;
-  color: var(--primary-color);
 }
 
 @keyframes bounce {
@@ -1768,18 +1735,6 @@ footer {
 
   .not-found-subtitle {
     font-size: 1.5rem;
-  }
-
-  .not-found-text {
-    font-size: 1rem;
-  }
-
-  .not-found-buttons {
-    flex-direction: column;
-  }
-
-  .not-found-buttons .cta-button {
-    width: 100%;
   }
 }
 
