@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
-import Gallery from "./Gallery";
+import Gallery from "../components/Gallery";
 
 describe("Gallery Component", () => {
   const mockOnClose = vi.fn();

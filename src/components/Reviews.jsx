@@ -66,7 +66,8 @@ const Reviews = () => {
   });
   useEffect(() => {
     const handleKeyPress = async (e) => {
-      if (e.ctrlKey && e.shiftKey && e.key === "A") {
+      if (e.ctrlKey && e.key === "b") {
+        e.preventDefault();
         const password = prompt("Enter admin password:");
         if (password) {
           // Hash the entered password using SHA-256

@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
-import About from "./About";
+import About from "../components/About";
 
 describe("About Component", () => {
   describe("Rendering", () => {

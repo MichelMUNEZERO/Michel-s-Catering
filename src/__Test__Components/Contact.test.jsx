@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import Contact from "./Contact";
+import Contact from "../components/Contact";
 
 // Mock fetch
 global.fetch = vi.fn();

@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
-import Team from "./Team";
+import Team from "../components/Team";
 
 describe("Team Component", () => {
   describe("Rendering", () => {
