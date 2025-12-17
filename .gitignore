@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Sensitive credentials
+ADMIN_CREDENTIALS.md
+**/ADMIN_CREDENTIALS.md
