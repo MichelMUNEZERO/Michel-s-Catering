@@ -10,16 +10,16 @@ const AdminLogin = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
-    const success = login(username, password);
+    const result = await login(username, password);
 
-    if (success) {
+    if (result.success) {
       navigate("/admin/dashboard");
     } else {
-      setError("Invalid username or password");
+      setError(result.error || "Invalid username or password");
       setPassword("");
     }
   };

@@ -48,20 +48,21 @@
 
 .scroller {
   display: flex;
+  gap: 20px;
   position: absolute;
   left: 0;
-  animation: slide 20s linear infinite;
+  animation: slide 30s linear infinite !important;
 }
 
 .clients-section .card {
-  flex: 0 0 33.333%;
+  width: 280px;
   height: 400px;
-  padding: 0 10px;
+  flex-shrink: 0;
   transition: transform 0.3s ease;
 }
 
 .clients-section .card:hover {
-  transform: scale(1.05);
+  transform: translateY(-10px);
   z-index: 10;
 }
 
@@ -80,7 +81,7 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(calc(-300px * 6));
   }
 }
 
@@ -121,8 +122,9 @@
   }
 
   .clients-section .card {
-    flex: 0 0 50%;
+    width: 200px;
     height: 300px;
+    flex-shrink: 0;
   }
 
   .clients-section .card-image {

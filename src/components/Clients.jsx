@@ -37,16 +37,23 @@ const Clients = () => {
       </div>
       <div className="scroller-container">
         <div className="scroller">
-          {/* First set of cards */}
+          {/* First set */}
           {clientLogos.map((client, index) => (
-            <div key={`client-${index}`} className="card">
+            <div key={`client-1-${index}`} className="card">
               <img src={client.src} alt={client.alt} className="card-image" />
             </div>
           ))}
 
-          {/* Duplicate set for seamless looping */}
+          {/* Second set */}
           {clientLogos.map((client, index) => (
-            <div key={`client-duplicate-${index}`} className="card">
+            <div key={`client-2-${index}`} className="card">
+              <img src={client.src} alt={client.alt} className="card-image" />
+            </div>
+          ))}
+
+          {/* Third set for extra smoothness */}
+          {clientLogos.map((client, index) => (
+            <div key={`client-3-${index}`} className="card">
               <img src={client.src} alt={client.alt} className="card-image" />
             </div>
           ))}

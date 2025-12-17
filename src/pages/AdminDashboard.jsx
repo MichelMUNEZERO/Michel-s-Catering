@@ -1,169 +1,171 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
-import '../styles/AdminDashboard.css';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+import { dashboardAPI, galleryAPI, reviewsAPI } from "../services/api";
+import "../styles/AdminDashboard.css";
 
 const AdminDashboard = () => {
-  const { isAuthenticated, logout, isLoading } = useAuth();
+  const { isAuthenticated, logout, isLoading, user } = useAuth();
   const navigate = useNavigate();
+
+  // State for navigation
+  const [activeTab, setActiveTab] = useState("overview");
+
+  // State for dashboard stats
+  const [stats, setStats] = useState(null);
+  const [loadingStats, setLoadingStats] = useState(true);
+
+  // State for gallery management
+  const [galleryItems, setGalleryItems] = useState([]);
   const [galleryImages, setGalleryImages] = useState([]);
-  const [selectedImages, setSelectedImages] = useState([]);
-  const [uploadPreview, setUploadPreview] = useState([]);
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [imageToDelete, setImageToDelete] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [uploadPreview, setUploadPreview] = useState([]);
+  const [uploadData, setUploadData] = useState({
+    title: "",
+    description: "",
+    category: "other",
+  });
+
+  // State for reviews management
+  const [reviews, setReviews] = useState([]);
+  const [selectedReview, setSelectedReview] = useState(null);
+
+  // State for modals
+  const [showGalleryModal, setShowGalleryModal] = useState(false);
+  const [showReviewModal, setShowReviewModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState(null);
+
+  // State for messages
+  const [message, setMessage] = useState({ type: "", text: "" });
 
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
-      navigate('/admin/login');
+      navigate("/admin/login");
     }
   }, [isAuthenticated, isLoading, navigate]);
 
   useEffect(() => {
-    // Load current gallery images
+    // Load gallery images from MongoDB
     loadGalleryImages();
   }, []);
 
-  const loadGalleryImages = () => {
-    // These are your current images from Gallery.jsx
-    const images = [
-      "/Photo/Gallery Photos/WhatsApp Image 2025-11-18 at 11.17.43_a4171453.jpg",
-      "/Photo/Gallery Photos/WhatsApp Image 2025-11-18 at 11.17.46_0004418b.jpg",
-      "/Photo/Gallery Photos/WhatsApp Image 2025-11-18 at 11.17.55_09a81adc.jpg",
-      "/Photo/Gallery Photos/WhatsApp Image 2025-11-18 at 11.18.26_1547c4f5.jpg",
-      "/Photo/Gallery Photos/WhatsApp Image 2025-11-18 at 11.18.27_017033fe.jpg",
-      "/Photo/Gallery Photos/WhatsApp Image 2025-11-18 at 11.18.27_4463cc63.jpg",
-      "/Photo/Gallery Photos/WhatsApp Image 2025-11-18 at 11.18.28_1f34e652.jpg",
-      "/Photo/Gallery Photos/WhatsApp Image 2025-11-18 at 11.18.30_f3535412.jpg",
-      "/Photo/Gallery Photos/WhatsApp Image 2025-11-18 at 11.18.33_59300c4f.jpg",
-      "/Photo/Gallery Photos/WhatsApp Image 2025-11-18 at 11.18.34_0acf7e8a.jpg",
-      "/Photo/Gallery Photos/WhatsApp Image 2025-11-18 at 11.18.34_2539351d.jpg",
-      "/Photo/Gallery Photos/WhatsApp Image 2025-11-18 at 11.18.34_ad05c003.jpg",
-      "/Photo/Gallery Photos/WhatsApp Image 2025-11-18 at 11.18.35_3ef47f81.jpg",
-      "/Photo/Gallery Photos/WhatsApp Image 2025-11-18 at 11.18.35_d010dabc.jpg",
-      "/Photo/Gallery Photos/WhatsApp Image 2025-11-18 at 11.18.36_4442f8d0.jpg",
-      "/Photo/Gallery Photos/WhatsApp Image 2025-11-18 at 11.18.36_6a1e356e.jpg",
-      "/Photo/Gallery Photos/WhatsApp Image 2025-11-18 at 11.18.36_ae4d6ee3.jpg",
-      "/Photo/Gallery Photos/WhatsApp Image 2025-11-18 at 11.18.36_ecad1288.jpg",
-      "/Photo/Gallery Photos/WhatsApp Image 2025-11-18 at 11.18.37_2a1d9045.jpg",
-      "/Photo/Gallery Photos/WhatsApp Image 2025-11-18 at 11.18.37_48f2a5de.jpg",
-      "/Photo/Gallery Photos/WhatsApp Image 2025-11-18 at 11.18.38_cb9c6140.jpg",
-      "/Photo/Gallery Photos/WhatsApp Image 2025-11-18 at 11.18.38_e33d1f60.jpg",
-      "/Photo/Gallery Photos/WhatsApp Image 2025-11-18 at 11.18.38_e8af61d7.jpg",
-      "/Photo/Gallery Photos/WhatsApp Image 2025-11-18 at 11.18.39_44adaac4.jpg",
-      "/Photo/Gallery Photos/WhatsApp Image 2025-11-18 at 11.18.44_107aaa12.jpg",
-      "/Photo/Gallery Photos/WhatsApp Image 2025-11-18 at 11.18.44_c84fa95f.jpg",
-      "/Photo/Gallery Photos/WhatsApp Image 2025-11-18 at 11.18.45_0e35886f.jpg",
-      "/Photo/Gallery Photos/WhatsApp Image 2025-11-18 at 11.18.45_40e7b95e.jpg",
-      "/Photo/Gallery Photos/WhatsApp Image 2025-11-18 at 11.18.45_4ff5a07c.jpg",
-      "/Photo/Gallery Photos/WhatsApp Image 2025-11-18 at 11.18.45_8d9e7aa9.jpg",
-    ];
-    setGalleryImages(images);
+  const loadGalleryImages = async () => {
+    try {
+      const response = await galleryAPI.getAll();
+      if (response.success) {
+        setGalleryImages(response.data);
+      }
+    } catch (error) {
+      console.error("Error loading gallery:", error);
+      setMessage({ type: "error", text: "Failed to load gallery images" });
+    }
   };
 
   const handleFileSelect = (e) => {
     const files = Array.from(e.target.files);
-    const previews = files.map(file => ({
+    const previews = files.map((file) => ({
       file,
       preview: URL.createObjectURL(file),
-      name: file.name
+      name: file.name,
     }));
     setUploadPreview(previews);
   };
 
-  const handleUpload = () => {
+  const handleUpload = async () => {
     if (uploadPreview.length === 0) {
-      alert('Please select images to upload');
+      alert("Please select images to upload");
       return;
     }
 
-    // Generate the code to add to Gallery.jsx
-    const codeSnippet = uploadPreview.map(img => `  "/Photo/Gallery Photos/${img.name}",`).join('\n');
+    setMessage({ type: "info", text: "Uploading images..." });
 
-    // Copy to clipboard
-    navigator.clipboard.writeText(codeSnippet).then(() => {
-      alert(
-        `✅ SUCCESS! Code copied to clipboard!\n\n` +
-        `📋 NEXT STEPS:\n\n` +
-        `1. The image paths have been copied to your clipboard\n\n` +
-        `2. Manually copy your ${uploadPreview.length} image(s) to:\n` +
-        `   C:\\Users\\miche\\Desktop\\Kamuta Ltd\\Michel-s-Catering\\public\\Photo\\Gallery Photos\\\n\n` +
-        `3. Open: src/components/Gallery.jsx\n\n` +
-        `4. Find the "galleryImages" array and paste the copied paths\n\n` +
-        `5. Save Gallery.jsx and refresh your browser\n\n` +
-        `💡 TIP: I'll also download these images with a special naming system to help you!`
-      );
+    try {
+      let successCount = 0;
+      let errorCount = 0;
 
-      // Trigger download for each image
-      uploadPreview.forEach((img, index) => {
-        setTimeout(() => {
-          const link = document.createElement('a');
-          link.href = img.preview;
-          link.download = img.name;
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-        }, index * 200); // Stagger downloads
-      });
-    }).catch(() => {
-      // Fallback if clipboard fails
-      alert(
-        `📋 UPLOAD INSTRUCTIONS:\n\n` +
-        `1. Copy your ${uploadPreview.length} image(s) to:\n` +
-        `   C:\\Users\\miche\\Desktop\\Kamuta Ltd\\Michel-s-Catering\\public\\Photo\\Gallery Photos\\\n\n` +
-        `2. Add these paths to src/components/Gallery.jsx:\n\n` +
-        codeSnippet +
-        `\n\n3. Save and refresh the website\n\n` +
-        `Images will download automatically - move them to the Gallery Photos folder!`
-      );
+      for (const img of uploadPreview) {
+        try {
+          const formData = new FormData();
+          formData.append("image", img.file);
+          formData.append("title", img.file.name.split(".")[0]);
+          formData.append("description", "Uploaded from admin panel");
+          formData.append("category", uploadData.category || "other");
 
-      // Still trigger downloads
-      uploadPreview.forEach((img, index) => {
-        setTimeout(() => {
-          const link = document.createElement('a');
-          link.href = img.preview;
-          link.download = img.name;
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-        }, index * 200);
-      });
-    });
+          const response = await galleryAPI.create(formData);
+          if (response.success) {
+            successCount++;
+          } else {
+            errorCount++;
+          }
+        } catch (err) {
+          console.error(`Error uploading ${img.file.name}:`, err);
+          errorCount++;
+        }
+      }
 
-    // Clear preview after a delay
-    setTimeout(() => {
-      uploadPreview.forEach(img => URL.revokeObjectURL(img.preview));
+      // Clear preview
+      uploadPreview.forEach((img) => URL.revokeObjectURL(img.preview));
       setUploadPreview([]);
-    }, uploadPreview.length * 200 + 500);
+
+      // Reload gallery
+      await loadGalleryImages();
+
+      // Show success message
+      setMessage({
+        type: "success",
+        text: `✅ Upload complete! ${successCount} image(s) uploaded successfully${
+          errorCount > 0 ? `, ${errorCount} failed` : ""
+        }.`,
+      });
+
+      // Clear message after 5 seconds
+      setTimeout(() => setMessage({ type: "", text: "" }), 5000);
+    } catch (error) {
+      console.error("Upload error:", error);
+      setMessage({
+        type: "error",
+        text: "❌ Failed to upload images. Please try again.",
+      });
+    }
   };
 
-  const confirmDelete = (imagePath) => {
-    setImageToDelete(imagePath);
+  const confirmDelete = (galleryItem) => {
+    setImageToDelete(galleryItem);
     setShowDeleteModal(true);
   };
 
-  const handleDelete = () => {
+  const handleDelete = async () => {
     if (!imageToDelete) return;
 
-    const fileName = imageToDelete.split('/').pop();
-    
-    alert(
-      `🗑️ DELETE INSTRUCTIONS:\n\n` +
-      `1. Remove this line from Gallery.jsx:\n` +
-      `   "${imageToDelete}",\n\n` +
-      `2. Delete this file from your computer:\n` +
-      `   public/Photo/Gallery Photos/${fileName}\n\n` +
-      `3. Refresh to see changes`
-    );
+    try {
+      const response = await galleryAPI.delete(imageToDelete._id);
+      if (response.success) {
+        setMessage({
+          type: "success",
+          text: "✅ Image deleted successfully!",
+        });
+        // Reload gallery
+        await loadGalleryImages();
+      } else {
+        setMessage({ type: "error", text: "❌ Failed to delete image" });
+      }
+    } catch (error) {
+      console.error("Delete error:", error);
+      setMessage({ type: "error", text: "❌ Failed to delete image" });
+    }
 
-    // Remove from display
-    setGalleryImages(galleryImages.filter(img => img !== imageToDelete));
     setShowDeleteModal(false);
     setImageToDelete(null);
+
+    // Clear message after 5 seconds
+    setTimeout(() => setMessage({ type: "", text: "" }), 5000);
   };
 
   const handleLogout = () => {
     logout();
-    navigate('/admin/login');
+    navigate("/admin/login");
   };
 
   if (isLoading) {
@@ -178,9 +180,11 @@ const AdminDashboard = () => {
     <div className="admin-dashboard">
       <header className="admin-header">
         <div className="admin-header-content">
-          <h1><i className="fas fa-images"></i> Gallery Manager</h1>
+          <h1>
+            <i className="fas fa-images"></i> Gallery Manager
+          </h1>
           <div className="admin-actions">
-            <button onClick={() => navigate('/')} className="view-site-btn">
+            <button onClick={() => navigate("/")} className="view-site-btn">
               <i className="fas fa-external-link-alt"></i> View Website
             </button>
             <button onClick={handleLogout} className="logout-btn">
@@ -192,21 +196,47 @@ const AdminDashboard = () => {
 
       <main className="admin-main">
         <div className="admin-container">
-          
+          {/* Message Display */}
+          {message.text && (
+            <div className={`admin-message admin-message-${message.type}`}>
+              <i
+                className={
+                  message.type === "success"
+                    ? "fas fa-check-circle"
+                    : message.type === "error"
+                    ? "fas fa-exclamation-circle"
+                    : "fas fa-info-circle"
+                }
+              ></i>
+              <span>{message.text}</span>
+              <button
+                onClick={() => setMessage({ type: "", text: "" })}
+                className="close-message"
+              >
+                <i className="fas fa-times"></i>
+              </button>
+            </div>
+          )}
           {/* Upload Section */}
           <section className="upload-section">
-            <h2><i className="fas fa-cloud-upload-alt"></i> Upload New Images</h2>
-            
+            <h2>
+              <i className="fas fa-cloud-upload-alt"></i> Upload New Images
+            </h2>
+
             <div className="info-box">
               <i className="fas fa-info-circle"></i>
               <div className="info-content">
-                <strong>How uploading works:</strong>
-                <p>Since this is a static website, you need to manually move files. This tool will help by:</p>
-                <ol>
-                  <li>Downloading your selected images to your Downloads folder</li>
-                  <li>Copying the required code to your clipboard</li>
-                  <li>You then move the images and paste the code into Gallery.jsx</li>
-                </ol>
+                <strong>Upload Images to MongoDB:</strong>
+                <p>
+                  Images are automatically uploaded to MongoDB and stored on the
+                  server. They will appear immediately on your gallery page.
+                </p>
+                <ul>
+                  <li>✅ Instant upload - No manual file copying required</li>
+                  <li>✅ Stored in MongoDB database</li>
+                  <li>✅ Automatically displayed on the website</li>
+                  <li>✅ Delete anytime from this dashboard</li>
+                </ul>
               </div>
             </div>
 
@@ -217,7 +247,7 @@ const AdminDashboard = () => {
                 multiple
                 accept="image/*"
                 onChange={handleFileSelect}
-                style={{ display: 'none' }}
+                style={{ display: "none" }}
               />
               <label htmlFor="file-input" className="upload-label">
                 <i className="fas fa-plus-circle"></i>
@@ -238,7 +268,7 @@ const AdminDashboard = () => {
                   ))}
                 </div>
                 <button onClick={handleUpload} className="upload-btn">
-                  <i className="fas fa-download"></i> Download Images & Copy Code
+                  <i className="fas fa-cloud-upload-alt"></i> Upload to MongoDB
                 </button>
               </div>
             )}
@@ -247,24 +277,30 @@ const AdminDashboard = () => {
           {/* Gallery Section */}
           <section className="gallery-management-section">
             <div className="section-header">
-              <h2><i className="fas fa-images"></i> Current Gallery ({galleryImages.length} images)</h2>
+              <h2>
+                <i className="fas fa-images"></i> Current Gallery (
+                {galleryImages.length} images)
+              </h2>
             </div>
-            
+
             <div className="admin-gallery-grid">
-              {galleryImages.map((image, index) => (
-                <div key={index} className="admin-gallery-item">
-                  <img src={image} alt={`Gallery ${index + 1}`} />
+              {galleryImages.map((item, index) => (
+                <div key={item._id || index} className="admin-gallery-item">
+                  <img src={item.imageUrl} alt={item.title} />
                   <div className="image-overlay">
                     <button
-                      onClick={() => confirmDelete(image)}
+                      onClick={() => confirmDelete(item)}
                       className="delete-btn"
                       title="Delete this image"
                     >
                       <i className="fas fa-trash-alt"></i> Delete
                     </button>
                   </div>
-                  <div className="image-name">
-                    {image.split('/').pop()}
+                  <div className="image-info">
+                    <div className="image-name">{item.title}</div>
+                    {item.description && (
+                      <div className="image-desc">{item.description}</div>
+                    )}
                   </div>
                 </div>
               ))}
@@ -275,15 +311,27 @@ const AdminDashboard = () => {
 
       {/* Delete Confirmation Modal */}
       {showDeleteModal && (
-        <div className="modal-overlay" onClick={() => setShowDeleteModal(false)}>
+        <div
+          className="modal-overlay"
+          onClick={() => setShowDeleteModal(false)}
+        >
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <h3><i className="fas fa-exclamation-triangle"></i> Confirm Delete</h3>
+            <h3>
+              <i className="fas fa-exclamation-triangle"></i> Confirm Delete
+            </h3>
             <p>Are you sure you want to delete this image?</p>
             <div className="modal-preview">
-              <img src={imageToDelete} alt="Delete preview" />
+              <img
+                src={imageToDelete?.imageUrl}
+                alt={imageToDelete?.title || "Delete preview"}
+              />
+              <p className="modal-image-title">{imageToDelete?.title}</p>
             </div>
             <div className="modal-actions">
-              <button onClick={() => setShowDeleteModal(false)} className="cancel-btn">
+              <button
+                onClick={() => setShowDeleteModal(false)}
+                className="cancel-btn"
+              >
                 Cancel
               </button>
               <button onClick={handleDelete} className="confirm-delete-btn">

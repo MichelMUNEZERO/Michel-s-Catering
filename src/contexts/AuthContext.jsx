@@ -1,45 +1,80 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
+import { authAPI } from "../services/api";
 
 const AuthContext = createContext();
-
-// CHANGE THESE CREDENTIALS - Make them secure!
-const ADMIN_CREDENTIALS = {
-  username: "admin", // Change this
-  password: "KamutaAdmin2025!", // Change this to something secure
-};
 
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [user, setUser] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Check if user was previously authenticated
-    const authStatus = sessionStorage.getItem("adminAuth");
-    if (authStatus === "true") {
-      setIsAuthenticated(true);
-    }
-    setIsLoading(false);
+    // Check if user has a token and verify it
+    const verifyToken = async () => {
+      const token = localStorage.getItem("adminToken");
+      if (token) {
+        try {
+          const response = await authAPI.verify();
+          if (response.success) {
+            setIsAuthenticated(true);
+            setUser(response.user);
+          } else {
+            localStorage.removeItem("adminToken");
+          }
+        } catch (err) {
+          console.error("Token verification failed:", err);
+          localStorage.removeItem("adminToken");
+        }
+      }
+      setIsLoading(false);
+    };
+
+    verifyToken();
   }, []);
 
-  const login = (username, password) => {
-    if (
-      username === ADMIN_CREDENTIALS.username &&
-      password === ADMIN_CREDENTIALS.password
-    ) {
-      setIsAuthenticated(true);
-      sessionStorage.setItem("adminAuth", "true");
-      return true;
+  const login = async (username, password) => {
+    try {
+      setError(null);
+      const response = await authAPI.login(username, password);
+
+      if (response.success) {
+        localStorage.setItem("adminToken", response.token);
+        setIsAuthenticated(true);
+        setUser(response.user);
+        return { success: true };
+      }
+      return { success: false, error: "Login failed" };
+    } catch (err) {
+      const errorMessage = err.message || "Login failed";
+      setError(errorMessage);
+      return { success: false, error: errorMessage };
     }
-    return false;
   };
 
-  const logout = () => {
-    setIsAuthenticated(false);
-    sessionStorage.removeItem("adminAuth");
+  const logout = async () => {
+    try {
+      await authAPI.logout();
+    } catch (err) {
+      console.error("Logout error:", err);
+    } finally {
+      setIsAuthenticated(false);
+      setUser(null);
+      localStorage.removeItem("adminToken");
+    }
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout, isLoading }}>
+    <AuthContext.Provider
+      value={{
+        isAuthenticated,
+        user,
+        login,
+        logout,
+        isLoading,
+        error,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
