@@ -5,7 +5,7 @@ import Home from "./Home";
 
 // Mock all child components
 vi.mock("../components/Header", () => ({
-  default: ({ toggleGallery, darkMode, toggleTheme }) => (
+  default: ({ toggleGallery, darkMode: _darkMode, toggleTheme }) => (
     <div data-testid="header">
       Header
       <button onClick={toggleGallery}>Toggle Gallery</button>

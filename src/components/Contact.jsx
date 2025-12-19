@@ -22,13 +22,6 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // Send to all three email addresses
-      const emails = [
-        "michelmunezero25@gmail.com",
-        "delishkamuta@gmail.com",
-        "fridamutesi@gmail.com",
-      ];
-
       const emailData = {
         name: formData.name,
         email: formData.email,
@@ -57,7 +50,7 @@ const Contact = () => {
       } else {
         throw new Error("Failed to send");
       }
-    } catch (error) {
+    } catch (_error) {
       alert(
         "❌ Failed to send message. Please try WhatsApp or call us directly."
       );
@@ -82,7 +75,7 @@ const Contact = () => {
     setShowMap(!showMap);
   };
 
-  const openGoogleMaps = () => {
+  const _openGoogleMaps = () => {
     // Open Google Maps with exact KAMUTA location
     const url =
       "https://www.google.com/maps/place/KAMUTA/@-1.9601887,30.1254034,1141m/data=!3m1!1e3!4m15!1m8!3m7!1s0x19dca7a206ea481d:0x2ad9a414dcfd7c08!2sKK+61+St,+Kigali!3b1!8m2!3d-1.9617775!4d30.1347594!16s%2Fg%2F12xqg4_tm!3m5!1s0x19dca763f677eedb:0xbd8af6c65569355e!8m2!3d-1.9610126!4d30.1209256!16s%2Fg%2F11hwyk331r?entry=ttu&g_ep=EgoyMDI1MTExNy4wIKXMDSoASAFQAw%3D%3D";

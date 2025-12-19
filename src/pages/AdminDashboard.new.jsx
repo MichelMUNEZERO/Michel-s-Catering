@@ -17,7 +17,7 @@ const AdminDashboard = () => {
 
   // Gallery management
   const [galleryItems, setGalleryItems] = useState([]);
-  const [selectedGalleryItem, setSelectedGalleryItem] = useState(null);
+  const [_selectedGalleryItem, setSelectedGalleryItem] = useState(null);
   const [uploadPreview, setUploadPreview] = useState(null);
   const [uploadData, setUploadData] = useState({
     title: "",
@@ -27,12 +27,12 @@ const AdminDashboard = () => {
 
   // Reviews management
   const [reviews, setReviews] = useState([]);
-  const [selectedReview, setSelectedReview] = useState(null);
+  const [_selectedReview, _setSelectedReview] = useState(null);
   const [reviewFilter, setReviewFilter] = useState("all");
 
   // Modals
   const [showGalleryModal, setShowGalleryModal] = useState(false);
-  const [showReviewModal, setShowReviewModal] = useState(false);
+  const [_showReviewModal, _setShowReviewModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
 
@@ -51,6 +51,7 @@ const AdminDashboard = () => {
       loadGalleryItems();
       loadReviews();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthenticated]);
 
   // Load dashboard statistics
@@ -61,7 +62,7 @@ const AdminDashboard = () => {
       if (response.success) {
         setStats(response.data);
       }
-    } catch (error) {
+    } catch (_error) {
       showMessage("error", "Failed to load dashboard statistics");
     } finally {
       setLoadingStats(false);
@@ -75,7 +76,7 @@ const AdminDashboard = () => {
       if (response.success) {
         setGalleryItems(response.data);
       }
-    } catch (error) {
+    } catch (_error) {
       showMessage("error", "Failed to load gallery items");
     }
   };
@@ -87,7 +88,7 @@ const AdminDashboard = () => {
       if (response.success) {
         setReviews(response.data);
       }
-    } catch (error) {
+    } catch (_error) {
       showMessage("error", "Failed to load reviews");
     }
   };

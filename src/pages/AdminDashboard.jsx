@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
-import { dashboardAPI, galleryAPI, reviewsAPI } from "../services/api";
+import { galleryAPI } from "../services/api";
 import "../styles/AdminDashboard.css";
 
-const AdminDashboard = ({ darkMode, toggleTheme }) => {
+const AdminDashboard = () => {
   const { isAuthenticated, logout, isLoading, user } = useAuth();
   const navigate = useNavigate();
 
@@ -12,31 +12,13 @@ const AdminDashboard = ({ darkMode, toggleTheme }) => {
   const [activeTab, setActiveTab] = useState("overview");
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
-  // State for dashboard stats
-  const [stats, setStats] = useState(null);
-  const [loadingStats, setLoadingStats] = useState(true);
-
   // State for gallery management
-  const [galleryItems, setGalleryItems] = useState([]);
   const [galleryImages, setGalleryImages] = useState([]);
   const [imageToDelete, setImageToDelete] = useState(null);
-  const [selectedImage, setSelectedImage] = useState(null);
   const [uploadPreview, setUploadPreview] = useState([]);
-  const [uploadData, setUploadData] = useState({
-    title: "",
-    description: "",
-    category: "other",
-  });
-
-  // State for reviews management
-  const [reviews, setReviews] = useState([]);
-  const [selectedReview, setSelectedReview] = useState(null);
 
   // State for modals
-  const [showGalleryModal, setShowGalleryModal] = useState(false);
-  const [showReviewModal, setShowReviewModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [itemToDelete, setItemToDelete] = useState(null);
 
   // State for messages
   const [message, setMessage] = useState({ type: "", text: "" });
@@ -46,11 +28,6 @@ const AdminDashboard = ({ darkMode, toggleTheme }) => {
       navigate("/admin/login");
     }
   }, [isAuthenticated, isLoading, navigate]);
-
-  useEffect(() => {
-    // Load gallery images from MongoDB
-    loadGalleryImages();
-  }, []);
 
   const loadGalleryImages = async () => {
     try {
@@ -63,6 +40,11 @@ const AdminDashboard = ({ darkMode, toggleTheme }) => {
       setMessage({ type: "error", text: "Failed to load gallery images" });
     }
   };
+
+  useEffect(() => {
+    // Load gallery images from MongoDB
+    loadGalleryImages();
+  }, []);
 
   const handleFileSelect = (e) => {
     const files = Array.from(e.target.files);
@@ -92,7 +74,7 @@ const AdminDashboard = ({ darkMode, toggleTheme }) => {
           formData.append("image", img.file);
           formData.append("title", img.file.name.split(".")[0]);
           formData.append("description", "Uploaded from admin panel");
-          formData.append("category", uploadData.category || "other");
+          formData.append("category", "other");
 
           const response = await galleryAPI.create(formData);
           if (response.success) {

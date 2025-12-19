@@ -28,7 +28,7 @@ const verifyToken = async (req, res, next) => {
 
     req.user = user;
     next();
-  } catch (error) {
+  } catch (_error) {
     return res.status(401).json({
       success: false,
       message: "Invalid or expired token.",
@@ -49,7 +49,7 @@ const isAdmin = async (req, res, next) => {
       });
     }
     next();
-  } catch (error) {
+  } catch (_error) {
     return res.status(500).json({
       success: false,
       message: "Server error during authorization check.",

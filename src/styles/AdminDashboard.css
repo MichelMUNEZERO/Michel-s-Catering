@@ -815,7 +815,6 @@
   font-weight: 600;
   color: #333;
   font-size: 0.95rem;
-}
   display: block;
   background: #f5f5f5;
 }
@@ -895,6 +894,7 @@
 }
 
 /* Tablet and below (768px) */
+@media (max-width: 768px) {
   .admin-header {
     padding: 15px 0;
   }
@@ -1299,7 +1299,7 @@
   .admin-gallery-item {
     border: 2px solid #000;
   }
-  
+
   .upload-area {
     border-width: 4px;
   }
@@ -1600,4 +1600,3 @@
 .dark-mode .theme-toggle-btn-dashboard:hover {
   background: rgba(255, 255, 255, 0.2);
 }
-

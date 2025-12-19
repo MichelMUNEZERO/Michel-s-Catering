@@ -9,7 +9,7 @@ import { IoIosContact } from "react-icons/io";
 import { FaServicestack } from "react-icons/fa6";
 import { GrGallery } from "react-icons/gr";
 
-const Header = ({ toggleGallery, darkMode, toggleTheme }) => {
+const Header = ({ toggleGallery, darkMode: _darkMode, toggleTheme }) => {
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
