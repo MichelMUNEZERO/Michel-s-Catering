@@ -4,18 +4,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #f5f7fa;
+  background-image: url("https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
   padding: 20px;
+  background-size: cover;
+  background-position: center;
+  backdrop-filter: blur(5px);
 }
 
 .admin-login-box {
-  background: white;
   border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 255, 255, 0.1);
   padding: 40px;
   width: 100%;
   max-width: 450px;
   animation: fadeIn 0.5s ease-in;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 @keyframes fadeIn {
@@ -36,7 +42,7 @@
 
 .admin-login-header i {
   font-size: 3rem;
-  color: #667eea;
+  color: #0933eb;
   margin-bottom: 15px;
   display: block;
   animation: pulse 2s infinite;
@@ -54,14 +60,16 @@
 
 .admin-login-header h2 {
   font-size: 2rem;
-  color: #333;
+  color: #ffffff;
   margin-bottom: 10px;
   font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .admin-login-header p {
-  color: #666;
+  color: #f0f0f0;
   font-size: 0.95rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .error-message {
@@ -100,14 +108,15 @@
 .form-group label {
   display: block;
   margin-bottom: 8px;
-  color: #333;
+  color: #ffffff;
   font-weight: 600;
   font-size: 0.95rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .form-group label i {
   margin-right: 8px;
-  color: #667eea;
+  color: #a0b4ff;
   width: 16px;
   display: inline-block;
 }
@@ -115,29 +124,33 @@
 .form-group input {
   width: 100%;
   padding: 12px 15px;
-  border: 2px solid #e0e0e0;
+  border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 8px;
   font-size: 1rem;
   transition: all 0.3s ease;
   box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  backdrop-filter: blur(10px);
 }
 
 .form-group input:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: #0933eb;
+  box-shadow: 0 0 0 3px rgba(9, 51, 235, 0.3);
+  background: rgba(204, 181, 181, 0.25);
 }
 
 .form-group input::placeholder {
-  color: #aaa;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .login-btn {
   width: 100%;
   padding: 14px 20px;
-  background: white;
-  color: black;
-  border: none;
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 8px;
   font-size: 1.1rem;
   font-weight: 600;
@@ -147,11 +160,15 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
+  backdrop-filter: blur(10px);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .login-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.35);
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
 .login-btn:active {
@@ -166,19 +183,20 @@
   text-align: center;
   margin-top: 25px;
   padding-top: 20px;
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .back-to-site a {
-  color: #667eea;
+  color: #a0b4ff;
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 500;
   transition: color 0.3s ease;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .back-to-site a:hover {
-  color: #764ba2;
+  color: #ffffff;
   text-decoration: underline;
 }
 
@@ -233,32 +251,33 @@
 /* Dark mode support (optional) */
 @media (prefers-color-scheme: dark) {
   .admin-login-box {
-    background: #1e1e1e;
+    background: rgba(20, 20, 30, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.15);
   }
 
   .admin-login-header h2 {
-    color: #f0f0f0;
+    color: #ffffff;
   }
 
   .admin-login-header p {
-    color: #aaa;
+    color: #e0e0e0;
   }
 
   .form-group label {
-    color: #f0f0f0;
+    color: #ffffff;
   }
 
   .form-group input {
-    background: #2a2a2a;
-    border-color: #444;
-    color: #f0f0f0;
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
   }
 
   .form-group input::placeholder {
-    color: #666;
+    color: rgba(255, 255, 255, 0.5);
   }
 
   .back-to-site {
-    border-top-color: #444;
+    border-top-color: rgba(255, 255, 255, 0.15);
   }
 }
