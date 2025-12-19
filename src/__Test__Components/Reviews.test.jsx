@@ -159,7 +159,7 @@ describe("Reviews Component", () => {
 
     it("should call API to fetch reviews on mount", async () => {
       render(<Reviews />);
-      
+
       await waitFor(() => {
         expect(reviewsAPI.getAll).toHaveBeenCalled();
       });
@@ -224,7 +224,7 @@ describe("Reviews Component", () => {
   describe("Rating Display", () => {
     it("should display 5-star rating correctly", async () => {
       const { container } = render(<Reviews />);
-      
+
       await waitFor(() => {
         const reviewCards = container.querySelectorAll(".review-card");
         expect(reviewCards.length).toBeGreaterThan(0);
@@ -233,7 +233,7 @@ describe("Reviews Component", () => {
 
     it("should have star icons", async () => {
       const { container } = render(<Reviews />);
-      
+
       await waitFor(() => {
         const stars = container.querySelectorAll(".fa-star");
         expect(stars.length).toBeGreaterThan(0);
@@ -244,7 +244,7 @@ describe("Reviews Component", () => {
   describe("Review Stats", () => {
     it("should display average rating", async () => {
       render(<Reviews />);
-      
+
       await waitFor(() => {
         // Average of mockReviews: (5 + 5 + 4) / 3 = 4.7
         expect(screen.getByText("4.7")).toBeInTheDocument();
@@ -253,7 +253,7 @@ describe("Reviews Component", () => {
 
     it("should display total review count", async () => {
       const { container } = render(<Reviews />);
-      
+
       await waitFor(() => {
         const reviews = container.querySelectorAll(".review-card");
         expect(reviews.length).toBeGreaterThan(0);
@@ -270,7 +270,7 @@ describe("Reviews Component", () => {
 
     it("should have review-cards container", async () => {
       const { container } = render(<Reviews />);
-      
+
       await waitFor(() => {
         const cards = container.querySelectorAll(".review-card");
         expect(cards.length).toBeGreaterThan(0);

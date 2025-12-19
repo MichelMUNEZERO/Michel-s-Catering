@@ -38,16 +38,16 @@ jobs:
             ${{ runner.os }}-backend-node-${{ matrix.node-version }}-
             ${{ runner.os }}-backend-node-
 
-      # Cache Vite build outputs
-      - name: Cache Vite build
-        uses: actions/cache@v5.0.1
-        with:
-          path: |
-            dist
-            .vite
-          key: ${{ runner.os }}-vite-build-${{ hashFiles('src/**', 'index.html', 'vite.config.js') }}
-          restore-keys: |
-            ${{ runner.os }}-vite-build-
+      # DO NOT cache Vite build outputs - ensures tests always use fresh code
+      # - name: Cache Vite build
+      #   uses: actions/cache@v5.0.1
+      #   with:
+      #     path: |
+      #       dist
+      #       .vite
+      #     key: ${{ runner.os }}-vite-build-${{ hashFiles('src/**', 'index.html', 'vite.config.js') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-vite-build-
 
       # Cache npm cache directory for faster installs
       - name: Cache npm
@@ -73,6 +73,9 @@ jobs:
 
       - name: Run linter
         run: npm run lint --if-present
+
+      - name: Clear test cache
+        run: npx vitest --clearCache || true
 
       - name: Run frontend tests
         run: npm test --if-present
