@@ -29,20 +29,20 @@ const AdminDashboard = () => {
     }
   }, [isAuthenticated, isLoading, navigate]);
 
-  const loadGalleryImages = async () => {
-    try {
-      const response = await galleryAPI.getAll();
-      if (response.success) {
-        setGalleryImages(response.data);
-      }
-    } catch (error) {
-      console.error("Error loading gallery:", error);
-      setMessage({ type: "error", text: "Failed to load gallery images" });
-    }
-  };
-
   useEffect(() => {
     // Load gallery images from MongoDB
+    const loadGalleryImages = async () => {
+      try {
+        const response = await galleryAPI.getAll();
+        if (response.success) {
+          setGalleryImages(response.data);
+        }
+      } catch (error) {
+        console.error("Error loading gallery:", error);
+        setMessage({ type: "error", text: "Failed to load gallery images" });
+      }
+    };
+
     loadGalleryImages();
   }, []);
 
