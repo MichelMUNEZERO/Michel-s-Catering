@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import "../styles/AdminLogin.css";
 
-const AdminLogin = () => {
+const AdminLogin = ({ darkMode, toggleTheme }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -26,6 +26,14 @@ const AdminLogin = () => {
 
   return (
     <div className="admin-login-container">
+      <button
+        onClick={toggleTheme}
+        className="theme-toggle-btn"
+        aria-label="Toggle dark mode"
+      >
+        <i className={darkMode ? "fas fa-sun" : "fas fa-moon"}></i>
+      </button>
+
       <div className="admin-login-box">
         <div className="admin-login-header">
           <i className="fas fa-lock"></i>

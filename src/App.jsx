@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
 import ReviewsPage from "./pages/ReviewsPage";
@@ -46,9 +51,22 @@ function App() {
             />
 
             {/* Admin Routes */}
-            <Route path="/admin/login" element={<AdminLogin />} />
-            <Route path="/admin/dashboard" element={<AdminDashboard />} />
-            <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
+            <Route
+              path="/admin/login"
+              element={
+                <AdminLogin darkMode={darkMode} toggleTheme={toggleTheme} />
+              }
+            />
+            <Route
+              path="/admin/dashboard"
+              element={
+                <AdminDashboard darkMode={darkMode} toggleTheme={toggleTheme} />
+              }
+            />
+            <Route
+              path="/admin"
+              element={<Navigate to="/admin/login" replace />}
+            />
 
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -4,7 +4,7 @@ import { useAuth } from "../contexts/AuthContext";
 import { dashboardAPI, galleryAPI, reviewsAPI } from "../services/api";
 import "../styles/AdminDashboard.css";
 
-const AdminDashboard = () => {
+const AdminDashboard = ({ darkMode, toggleTheme }) => {
   const { isAuthenticated, logout, isLoading, user } = useAuth();
   const navigate = useNavigate();
 
