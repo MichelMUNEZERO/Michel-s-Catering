@@ -37,8 +37,8 @@ describe("Clients Component", () => {
       const { container } = render(<Clients />);
       const uniqueClients = container.querySelectorAll(".card img");
 
-      // Should have duplicates for seamless scrolling (6 original + 6 duplicates = 12)
-      expect(uniqueClients.length).toBe(12);
+      // Should have duplicates for seamless scrolling (6 original + 6 duplicates + 6 third set = 18)
+      expect(uniqueClients.length).toBe(18);
     });
 
     it("should have correct src attributes for logos", () => {
@@ -75,8 +75,8 @@ describe("Clients Component", () => {
       const { container } = render(<Clients />);
       const cards = container.querySelectorAll(".card");
 
-      // Should have double the logos for seamless scrolling
-      expect(cards.length).toBe(12); // 6 originals + 6 duplicates
+      // Should have triple the logos for seamless scrolling
+      expect(cards.length).toBe(18); // 6 originals + 6 duplicates + 6 third set
     });
   });
 
@@ -104,7 +104,7 @@ describe("Clients Component", () => {
     it("should have card-image class on all images", () => {
       const { container } = render(<Clients />);
       const images = container.querySelectorAll(".card-image");
-      expect(images.length).toBe(12);
+      expect(images.length).toBe(18);
     });
 
     it("should render images with proper attributes", () => {
