@@ -102,7 +102,7 @@ describe("Gallery Component", () => {
       // Lightbox should display the image
       const lightbox = container.querySelector(".lightbox");
       expect(lightbox).toBeInTheDocument();
-      
+
       const lightboxImage = lightbox.querySelector("img");
       expect(lightboxImage).toHaveAttribute("alt", "Gallery 1");
     });
