@@ -75,12 +75,13 @@ jobs:
         run: npm run lint --if-present
 
       - name: Clear test cache
-        run: npx vitest --clearCache || true
+        run: rm -rf node_modules/.vite node_modules/.vitest || true
 
       - name: Run frontend tests
         run: npm test --if-present
         env:
           NODE_ENV: test
+          NO_COLOR: 1
 
       - name: Build frontend
         run: npm run build
