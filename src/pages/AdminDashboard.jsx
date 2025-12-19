@@ -10,6 +10,7 @@ const AdminDashboard = () => {
 
   // State for navigation
   const [activeTab, setActiveTab] = useState("overview");
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   // State for dashboard stats
   const [stats, setStats] = useState(null);
@@ -181,133 +182,252 @@ const AdminDashboard = () => {
       <header className="admin-header">
         <div className="admin-header-content">
           <h1>
-            <i className="fas fa-images"></i> Gallery Manager
+            <i className="fas fa-tachometer-alt"></i> Admin Dashboard
           </h1>
-          <div className="admin-actions">
-            <button onClick={() => navigate("/")} className="view-site-btn">
-              <i className="fas fa-external-link-alt"></i> View Website
-            </button>
-            <button onClick={handleLogout} className="logout-btn">
-              <i className="fas fa-sign-out-alt"></i> Logout
-            </button>
-          </div>
         </div>
       </header>
 
-      <main className="admin-main">
-        <div className="admin-container">
-          {/* Message Display */}
-          {message.text && (
-            <div className={`admin-message admin-message-${message.type}`}>
-              <i
-                className={
-                  message.type === "success"
-                    ? "fas fa-check-circle"
-                    : message.type === "error"
-                    ? "fas fa-exclamation-circle"
-                    : "fas fa-info-circle"
-                }
-              ></i>
-              <span>{message.text}</span>
-              <button
-                onClick={() => setMessage({ type: "", text: "" })}
-                className="close-message"
-              >
-                <i className="fas fa-times"></i>
-              </button>
-            </div>
-          )}
-          {/* Upload Section */}
-          <section className="upload-section">
-            <h2>
-              <i className="fas fa-cloud-upload-alt"></i> Upload New Images
-            </h2>
+      <div className="admin-layout">
+        {/* Sidebar Navigation */}
+        <aside
+          className={`admin-sidebar ${sidebarCollapsed ? "collapsed" : ""}`}
+        >
+          <button
+            className="sidebar-toggle"
+            onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
+            title={sidebarCollapsed ? "Expand Sidebar" : "Collapse Sidebar"}
+          >
+            <i
+              className={`fas ${
+                sidebarCollapsed ? "fa-chevron-right" : "fa-chevron-left"
+              }`}
+            ></i>
+          </button>
 
-            <div className="info-box">
-              <i className="fas fa-info-circle"></i>
-              <div className="info-content">
-                <strong>Upload Images to MongoDB:</strong>
-                <p>
-                  Images are automatically uploaded to MongoDB and stored on the
-                  server. They will appear immediately on your gallery page.
-                </p>
-                <ul>
-                  <li>✅ Instant upload - No manual file copying required</li>
-                  <li>✅ Stored in MongoDB database</li>
-                  <li>✅ Automatically displayed on the website</li>
-                  <li>✅ Delete anytime from this dashboard</li>
-                </ul>
-              </div>
-            </div>
+          <nav className="sidebar-nav">
+            <button
+              className={`nav-item ${activeTab === "overview" ? "active" : ""}`}
+              onClick={() => setActiveTab("overview")}
+            >
+              <i className="fas fa-home"></i>
+              <span>Overview</span>
+            </button>
+            <button
+              className={`nav-item ${activeTab === "gallery" ? "active" : ""}`}
+              onClick={() => setActiveTab("gallery")}
+            >
+              <i className="fas fa-images"></i>
+              <span>Gallery Manager</span>
+            </button>
+            <button
+              className={`nav-item ${activeTab === "upload" ? "active" : ""}`}
+              onClick={() => setActiveTab("upload")}
+            >
+              <i className="fas fa-cloud-upload-alt"></i>
+              <span>Upload Images</span>
+            </button>
+          </nav>
 
-            <div className="upload-area">
-              <input
-                type="file"
-                id="file-input"
-                multiple
-                accept="image/*"
-                onChange={handleFileSelect}
-                style={{ display: "none" }}
-              />
-              <label htmlFor="file-input" className="upload-label">
-                <i className="fas fa-plus-circle"></i>
-                <span>Click to select images</span>
-                <small>JPG, PNG, WebP supported</small>
-              </label>
-            </div>
+          <div className="sidebar-actions">
+            <button
+              onClick={() => navigate("/")}
+              className="sidebar-action-btn"
+            >
+              <i className="fas fa-external-link-alt"></i>
+              <span>View Website</span>
+            </button>
+            <button
+              onClick={handleLogout}
+              className="sidebar-action-btn logout"
+            >
+              <i className="fas fa-sign-out-alt"></i>
+              <span>Logout</span>
+            </button>
+          </div>
+        </aside>
 
-            {uploadPreview.length > 0 && (
-              <div className="upload-preview">
-                <h3>Selected Images ({uploadPreview.length})</h3>
-                <div className="preview-grid">
-                  {uploadPreview.map((img, index) => (
-                    <div key={index} className="preview-item">
-                      <img src={img.preview} alt={img.name} />
-                      <p>{img.name}</p>
-                    </div>
-                  ))}
-                </div>
-                <button onClick={handleUpload} className="upload-btn">
-                  <i className="fas fa-cloud-upload-alt"></i> Upload to MongoDB
+        {/* Main Content */}
+        <main className="admin-main">
+          <div className="admin-container">
+            {/* Message Display */}
+            {message.text && (
+              <div className={`admin-message admin-message-${message.type}`}>
+                <i
+                  className={
+                    message.type === "success"
+                      ? "fas fa-check-circle"
+                      : message.type === "error"
+                      ? "fas fa-exclamation-circle"
+                      : "fas fa-info-circle"
+                  }
+                ></i>
+                <span>{message.text}</span>
+                <button
+                  onClick={() => setMessage({ type: "", text: "" })}
+                  className="close-message"
+                >
+                  <i className="fas fa-times"></i>
                 </button>
               </div>
             )}
-          </section>
 
-          {/* Gallery Section */}
-          <section className="gallery-management-section">
-            <div className="section-header">
-              <h2>
-                <i className="fas fa-images"></i> Current Gallery (
-                {galleryImages.length} images)
-              </h2>
-            </div>
-
-            <div className="admin-gallery-grid">
-              {galleryImages.map((item, index) => (
-                <div key={item._id || index} className="admin-gallery-item">
-                  <img src={item.imageUrl} alt={item.title} />
-                  <div className="image-overlay">
-                    <button
-                      onClick={() => confirmDelete(item)}
-                      className="delete-btn"
-                      title="Delete this image"
-                    >
-                      <i className="fas fa-trash-alt"></i> Delete
-                    </button>
+            {/* Overview Tab */}
+            {activeTab === "overview" && (
+              <section className="overview-section">
+                <h2>
+                  <i className="fas fa-chart-line"></i> Dashboard Overview
+                </h2>
+                <div className="stats-grid">
+                  <div className="stat-card">
+                    <div className="stat-icon">
+                      <i className="fas fa-images"></i>
+                    </div>
+                    <div className="stat-info">
+                      <h3>{galleryImages.length}</h3>
+                      <p>Gallery Images</p>
+                    </div>
                   </div>
-                  <div className="image-info">
-                    <div className="image-name">{item.title}</div>
-                    {item.description && (
-                      <div className="image-desc">{item.description}</div>
-                    )}
+                  <div className="stat-card">
+                    <div className="stat-icon">
+                      <i className="fas fa-eye"></i>
+                    </div>
+                    <div className="stat-info">
+                      <h3>Active</h3>
+                      <p>Gallery Status</p>
+                    </div>
+                  </div>
+                  <div className="stat-card">
+                    <div className="stat-icon">
+                      <i className="fas fa-user-shield"></i>
+                    </div>
+                    <div className="stat-info">
+                      <h3>{user?.username || "Admin"}</h3>
+                      <p>Logged In</p>
+                    </div>
                   </div>
                 </div>
-              ))}
-            </div>
-          </section>
-        </div>
-      </main>
+                <div className="info-box">
+                  <i className="fas fa-lightbulb"></i>
+                  <div className="info-content">
+                    <strong>Welcome to Gallery Manager!</strong>
+                    <p>
+                      Use the sidebar to navigate between different sections:
+                    </p>
+                    <ul>
+                      <li>
+                        📸 <strong>Gallery Manager:</strong> View and manage all
+                        gallery images
+                      </li>
+                      <li>
+                        📤 <strong>Upload Images:</strong> Add new images to
+                        your gallery
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+            )}
+
+            {/* Upload Section */}
+            {activeTab === "upload" && (
+              <section className="upload-section">
+                <h2>
+                  <i className="fas fa-cloud-upload-alt"></i> Upload New Images
+                </h2>
+
+                <div className="info-box">
+                  <i className="fas fa-info-circle"></i>
+                  <div className="info-content">
+                    <strong>Upload Images to MongoDB:</strong>
+                    <p>
+                      Images are automatically uploaded to MongoDB and stored on
+                      the server. They will appear immediately on your gallery
+                      page.
+                    </p>
+                    <ul>
+                      <li>
+                        ✅ Instant upload - No manual file copying required
+                      </li>
+                      <li>✅ Stored in MongoDB database</li>
+                      <li>✅ Automatically displayed on the website</li>
+                      <li>✅ Delete anytime from this dashboard</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="upload-area">
+                  <input
+                    type="file"
+                    id="file-input"
+                    multiple
+                    accept="image/*"
+                    onChange={handleFileSelect}
+                    style={{ display: "none" }}
+                  />
+                  <label htmlFor="file-input" className="upload-label">
+                    <i className="fas fa-plus-circle"></i>
+                    <span>Click to select images</span>
+                    <small>JPG, PNG, WebP supported</small>
+                  </label>
+                </div>
+
+                {uploadPreview.length > 0 && (
+                  <div className="upload-preview">
+                    <h3>Selected Images ({uploadPreview.length})</h3>
+                    <div className="preview-grid">
+                      {uploadPreview.map((img, index) => (
+                        <div key={index} className="preview-item">
+                          <img src={img.preview} alt={img.name} />
+                          <p>{img.name}</p>
+                        </div>
+                      ))}
+                    </div>
+                    <button onClick={handleUpload} className="upload-btn">
+                      <i className="fas fa-cloud-upload-alt"></i> Upload to
+                      MongoDB
+                    </button>
+                  </div>
+                )}
+              </section>
+            )}
+
+            {/* Gallery Section */}
+            {activeTab === "gallery" && (
+              <section className="gallery-management-section">
+                <div className="section-header">
+                  <h2>
+                    <i className="fas fa-images"></i> Current Gallery (
+                    {galleryImages.length} images)
+                  </h2>
+                </div>
+
+                <div className="admin-gallery-grid">
+                  {galleryImages.map((item, index) => (
+                    <div key={item._id || index} className="admin-gallery-item">
+                      <img src={item.imageUrl} alt={item.title} />
+                      <div className="image-overlay">
+                        <button
+                          onClick={() => confirmDelete(item)}
+                          className="delete-btn"
+                          title="Delete this image"
+                        >
+                          <i className="fas fa-trash-alt"></i> Delete
+                        </button>
+                      </div>
+                      <div className="image-info">
+                        <div className="image-name">{item.title}</div>
+                        {item.description && (
+                          <div className="image-desc">{item.description}</div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+          </div>
+        </main>
+      </div>
 
       {/* Delete Confirmation Modal */}
       {showDeleteModal && (
