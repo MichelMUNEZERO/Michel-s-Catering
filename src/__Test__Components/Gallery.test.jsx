@@ -99,8 +99,12 @@ describe("Gallery Component", () => {
       const firstImage = container.querySelector(".gallery-item");
       fireEvent.click(firstImage);
 
-      const lightboxImage = screen.getByAltText("Full view");
-      expect(lightboxImage).toBeInTheDocument();
+      // Lightbox should display the image
+      const lightbox = container.querySelector(".lightbox");
+      expect(lightbox).toBeInTheDocument();
+      
+      const lightboxImage = lightbox.querySelector("img");
+      expect(lightboxImage).toHaveAttribute("alt", "Gallery 1");
     });
 
     it("should close lightbox when clicked", async () => {
