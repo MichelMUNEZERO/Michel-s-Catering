@@ -1366,3 +1366,232 @@
   }
 }
 
+/* ========================================
+   DARK MODE SUPPORT
+   ======================================== */
+@media (prefers-color-scheme: dark) {
+  /* Main Container */
+  .admin-container {
+    background: #1a1a1a;
+    color: #e0e0e0;
+  }
+
+  /* Header */
+  .admin-header {
+    background: linear-gradient(135deg, #1e2936 0%, #2c3e50 100%);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Sidebar */
+  .admin-sidebar {
+    background: #1e1e1e;
+    border-right: 3px solid #34495e;
+  }
+
+  /* Navigation Items */
+  .nav-item {
+    color: #e0e0e0;
+  }
+
+  .nav-item:hover {
+    background: #2a2a2a;
+  }
+
+  .nav-item.active {
+    background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+    color: white;
+  }
+
+  .nav-item i {
+    color: #5dade2;
+  }
+
+  .nav-item.active i {
+    color: white;
+  }
+
+  /* Sidebar Actions */
+  .sidebar-action-btn {
+    border-color: #34495e;
+    color: #e0e0e0;
+  }
+
+  .sidebar-action-btn:hover {
+    background: #34495e;
+    color: white;
+  }
+
+  /* Main Content */
+  .admin-main {
+    background: #1a1a1a;
+  }
+
+  /* Section Titles */
+  .admin-container h2 {
+    color: #e0e0e0;
+  }
+
+  .admin-container h2 i {
+    color: #5dade2;
+  }
+
+  /* Stats Cards */
+  .stat-card {
+    background: #2a2a2a;
+    border: 1px solid #3a3a3a;
+  }
+
+  .stat-info p {
+    color: #999;
+  }
+
+  .stat-info h3 {
+    color: #e0e0e0;
+  }
+
+  /* Info Box */
+  .info-box {
+    background: #2a2a2a;
+    border-color: #34495e;
+  }
+
+  .info-box p {
+    color: #b0b0b0;
+  }
+
+  /* Upload Area */
+  .upload-area {
+    background: #2a2a2a;
+    border-color: #34495e;
+  }
+
+  .upload-area:hover {
+    background: #333;
+    border-color: #e74c3c;
+  }
+
+  .upload-label i {
+    color: #5dade2;
+  }
+
+  .upload-label span {
+    color: #e0e0e0;
+  }
+
+  /* Preview Container */
+  .preview-container {
+    background: #2a2a2a;
+    border-color: #3a3a3a;
+  }
+
+  .preview-container img {
+    border-color: #3a3a3a;
+  }
+
+  /* Gallery Grid */
+  .admin-gallery-grid {
+    background: transparent;
+  }
+
+  .admin-gallery-item {
+    background: #2a2a2a;
+    border: 1px solid #3a3a3a;
+  }
+
+  .admin-gallery-item:hover {
+    border-color: #34495e;
+  }
+
+  /* Empty State */
+  .empty-state {
+    color: #999;
+  }
+
+  .empty-state i {
+    color: #555;
+  }
+
+  /* Loading State */
+  .loading {
+    background: #1a1a1a;
+    color: #5dade2;
+  }
+
+  /* Tooltips */
+  .tooltip {
+    background: #2a2a2a;
+    color: #e0e0e0;
+    border: 1px solid #3a3a3a;
+  }
+
+  .tooltip::before {
+    border-right-color: #3a3a3a;
+  }
+
+  /* Scrollbar */
+  .admin-sidebar::-webkit-scrollbar-track {
+    background: #1e1e1e;
+  }
+
+  .admin-sidebar::-webkit-scrollbar-thumb {
+    background: #3a3a3a;
+  }
+
+  .admin-sidebar::-webkit-scrollbar-thumb:hover {
+    background: #4a4a4a;
+  }
+
+  /* Form Inputs (if any) */
+  input[type="file"] {
+    color: #e0e0e0;
+  }
+
+  /* Responsive adjustments for dark mode */
+  @media (max-width: 768px) {
+    .admin-sidebar {
+      background: #1e1e1e;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
+/* ========================================
+   LIGHT MODE (Explicit)
+   ======================================== */
+@media (prefers-color-scheme: light) {
+  /* Ensure light mode styles are explicit */
+  .admin-container {
+    background: #f5f7fa;
+    color: #333;
+  }
+
+  .admin-header {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  }
+
+  .admin-sidebar {
+    background: white;
+    border-right: 3px solid #2c3e50;
+  }
+
+  .nav-item {
+    color: #333;
+  }
+
+  .nav-item:hover {
+    background: #f0f4ff;
+  }
+
+  .nav-item i {
+    color: #2c3e50;
+  }
+
+  .stat-card {
+    background: white;
+  }
+
+  .admin-gallery-item {
+    background: white;
+  }
+}
+
