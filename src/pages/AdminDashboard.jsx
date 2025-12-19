@@ -232,6 +232,7 @@ const AdminDashboard = () => {
             <button
               onClick={() => navigate("/")}
               className="sidebar-action-btn"
+              title="View Website"
             >
               <i className="fas fa-external-link-alt"></i>
               <span>View Website</span>
@@ -239,6 +240,7 @@ const AdminDashboard = () => {
             <button
               onClick={handleLogout}
               className="sidebar-action-btn logout"
+              title="Logout"
             >
               <i className="fas fa-sign-out-alt"></i>
               <span>Logout</span>

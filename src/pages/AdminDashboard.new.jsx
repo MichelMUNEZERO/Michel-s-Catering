@@ -266,9 +266,6 @@ const AdminDashboard = () => {
             <span>
               <i className="fas fa-user-circle"></i> {user?.username || "Admin"}
             </span>
-            <button onClick={handleLogout} className="logout-btn">
-              <i className="fas fa-sign-out-alt"></i> Logout
-            </button>
           </div>
         </div>
       </header>
@@ -309,6 +306,9 @@ const AdminDashboard = () => {
             </button>
             <button className="nav-item" onClick={() => navigate("/")}>
               <i className="fas fa-external-link-alt"></i> View Website
+            </button>
+            <button onClick={handleLogout} className="logout-btn">
+              <i className="fas fa-sign-out-alt"></i> Logout
             </button>
           </nav>
         </aside>
