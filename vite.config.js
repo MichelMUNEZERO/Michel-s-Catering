@@ -10,18 +10,9 @@ export default defineConfig({
     setupFiles: "./src/test/setup.js",
     css: true,
     passWithNoTests: true, // Exit successfully if no tests found
-    testTimeout: 5000, // 5 second timeout for individual tests (reduced)
+    testTimeout: 5000, // 5 second timeout for individual tests
     hookTimeout: 5000, // 5 second timeout for hooks
     teardownTimeout: 5000, // 5 second timeout for teardown
-    // Add global test timeout to prevent infinite hanging
-    pool: "forks",
-    poolOptions: {
-      forks: {
-        singleFork: true,
-      },
-    },
-    // Set a hard limit for the entire test run
-    bail: 1, // Stop after first test failure to prevent wasting time
     coverage: {
       provider: "v8",
       reporter: ["text", "json", "html"],
