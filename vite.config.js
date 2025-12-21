@@ -9,10 +9,17 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: "./src/test/setup.js",
     css: true,
-    passWithNoTests: true, // Exit successfully if no tests found
-    testTimeout: 5000, // 5 second timeout for individual tests
-    hookTimeout: 5000, // 5 second timeout for hooks
-    teardownTimeout: 5000, // 5 second timeout for teardown
+    passWithNoTests: true,
+    testTimeout: 5000,
+    hookTimeout: 5000,
+    teardownTimeout: 5000,
+    // Run tests sequentially to prevent CI hangs
+    pool: "threads",
+    poolOptions: {
+      threads: {
+        singleThread: true,
+      },
+    },
     coverage: {
       provider: "v8",
       reporter: ["text", "json", "html"],
