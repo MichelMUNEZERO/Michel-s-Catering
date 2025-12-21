@@ -62,7 +62,8 @@ const AdminDashboard = () => {
       if (response.success) {
         setStats(response.data);
       }
-    } catch (_error) {
+    } catch (error) {
+      console.error("Error loading stats:", error);
       showMessage("error", "Failed to load dashboard statistics");
     } finally {
       setLoadingStats(false);
@@ -76,7 +77,8 @@ const AdminDashboard = () => {
       if (response.success) {
         setGalleryItems(response.data);
       }
-    } catch (_error) {
+    } catch (error) {
+      console.error("Error loading gallery:", error);
       showMessage("error", "Failed to load gallery items");
     }
   };
@@ -88,7 +90,8 @@ const AdminDashboard = () => {
       if (response.success) {
         setReviews(response.data);
       }
-    } catch (_error) {
+    } catch (error) {
+      console.error("Error loading reviews:", error);
       showMessage("error", "Failed to load reviews");
     }
   };

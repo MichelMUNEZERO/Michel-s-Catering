@@ -5,7 +5,8 @@ import Home from "./Home";
 
 // Mock all child components
 vi.mock("../components/Header", () => ({
-  default: ({ toggleGallery, darkMode: _darkMode, toggleTheme }) => (
+  // eslint-disable-next-line no-unused-vars
+  default: ({ toggleGallery, darkMode, toggleTheme }) => (
     <div data-testid="header">
       Header
       <button onClick={toggleGallery}>Toggle Gallery</button>

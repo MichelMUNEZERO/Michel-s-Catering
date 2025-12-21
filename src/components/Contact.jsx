@@ -50,7 +50,8 @@ const Contact = () => {
       } else {
         throw new Error("Failed to send");
       }
-    } catch (_error) {
+    } catch (error) {
+      console.error("Contact form error:", error);
       alert(
         "❌ Failed to send message. Please try WhatsApp or call us directly."
       );
