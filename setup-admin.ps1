@@ -99,7 +99,7 @@ Write-Host "3. Start backend: cd server && npm run dev" -ForegroundColor White
 Write-Host "4. Start frontend (new terminal): npm run dev" -ForegroundColor White
 Write-Host "5. Login at http://localhost:5173/admin/login" -ForegroundColor White
 Write-Host "   Username: admin" -ForegroundColor White
-Write-Host "   Password: KamutaAdmin2025!" -ForegroundColor White
+Write-Host "   Password: $2a$10$..." -ForegroundColor White
 
 Write-Host "`nFor detailed instructions, see ADMIN_SETUP_GUIDE.md" -ForegroundColor Cyan
 

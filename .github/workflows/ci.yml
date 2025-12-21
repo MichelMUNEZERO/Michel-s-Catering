@@ -79,9 +79,11 @@ jobs:
 
       - name: Run frontend tests
         run: npm test --if-present
+        timeout-minutes: 5 # Kill tests after 5 minutes
         env:
           NODE_ENV: test
           NO_COLOR: 1
+          CI: true
 
       - name: Build frontend
         run: npm run build

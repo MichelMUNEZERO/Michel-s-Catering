@@ -137,7 +137,7 @@ const AdminDashboard = () => {
       // Show success message
       setMessage({
         type: "success",
-        text: `✅ Upload complete! ${successCount} image(s) uploaded successfully${
+        text: `Upload complete! ${successCount} image(s) uploaded successfully${
           errorCount > 0 ? `, ${errorCount} failed` : ""
         }.`,
       });
@@ -148,7 +148,7 @@ const AdminDashboard = () => {
       console.error("Upload error:", error);
       setMessage({
         type: "error",
-        text: "❌ Failed to upload images. Please try again.",
+        text: "Failed to upload images. Please try again.",
       });
     }
   };
@@ -166,16 +166,16 @@ const AdminDashboard = () => {
       if (response.success) {
         setMessage({
           type: "success",
-          text: "✅ Image deleted successfully!",
+          text: "Image deleted successfully!",
         });
         // Reload gallery
         await loadGalleryImages();
       } else {
-        setMessage({ type: "error", text: "❌ Failed to delete image" });
+        setMessage({ type: "error", text: "Failed to delete image" });
       }
     } catch (error) {
       console.error("Delete error:", error);
-      setMessage({ type: "error", text: "❌ Failed to delete image" });
+      setMessage({ type: "error", text: "Failed to delete image" });
     }
 
     setShowDeleteModal(false);
@@ -194,14 +194,14 @@ const AdminDashboard = () => {
       if (response.success) {
         setMessage({
           type: "success",
-          text: "✅ Review approved successfully!",
+          text: "Review approved successfully!",
         });
         await loadReviews();
         await loadDashboardStats();
       }
     } catch (error) {
       console.error("Approve error:", error);
-      setMessage({ type: "error", text: "❌ Failed to approve review" });
+      setMessage({ type: "error", text: "Failed to approve review" });
     }
 
     setShowReviewApproveModal(false);
@@ -217,14 +217,14 @@ const AdminDashboard = () => {
       if (response.success) {
         setMessage({
           type: "success",
-          text: "✅ Review rejected successfully!",
+          text: "Review rejected successfully!",
         });
         await loadReviews();
         await loadDashboardStats();
       }
     } catch (error) {
       console.error("Reject error:", error);
-      setMessage({ type: "error", text: "❌ Failed to reject review" });
+      setMessage({ type: "error", text: "Failed to reject review" });
     }
 
     setShowReviewRejectModal(false);
@@ -240,14 +240,14 @@ const AdminDashboard = () => {
       if (response.success) {
         setMessage({
           type: "success",
-          text: "✅ Review deleted successfully!",
+          text: "Review deleted successfully!",
         });
         await loadReviews();
         await loadDashboardStats();
       }
     } catch (error) {
       console.error("Delete error:", error);
-      setMessage({ type: "error", text: "❌ Failed to delete review" });
+      setMessage({ type: "error", text: "Failed to delete review" });
     }
 
     setShowReviewDeleteModal(false);
@@ -509,12 +509,10 @@ const AdminDashboard = () => {
                       page.
                     </p>
                     <ul>
-                      <li>
-                        ✅ Instant upload - No manual file copying required
-                      </li>
-                      <li>✅ Stored in MongoDB database</li>
-                      <li>✅ Automatically displayed on the website</li>
-                      <li>✅ Delete anytime from this dashboard</li>
+                      <li>Instant upload - No manual file copying required</li>
+                      <li>Stored in MongoDB database</li>
+                      <li>Automatically displayed on the website</li>
+                      <li>Delete anytime from this dashboard</li>
                     </ul>
                   </div>
                 </div>

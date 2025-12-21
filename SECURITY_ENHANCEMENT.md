@@ -12,7 +12,7 @@ This document outlines the security improvements made to remove hard-coded crede
 
 **Before**:
 
-- Plain-text password `'KamutaAdmin2025!'` was hard-coded in the script
+- Plain-text password `'$2a$10$...'` was hard-coded in the script
 - Password was visible to anyone with access to the codebase
 - Vulnerable to accidental exposure through version control
 

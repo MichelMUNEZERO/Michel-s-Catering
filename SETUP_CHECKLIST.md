@@ -63,7 +63,7 @@ Use this checklist to ensure your admin dashboard is properly set up and working
 - [ ] Saw success message: "Admin user created successfully"
 - [ ] Noted default credentials:
   - Username: `admin`
-  - Password: `KamutaAdmin2025!`
+  - Password: `$2a$10$...`
 - [ ] Plan to change password after first login
 
 ---
@@ -98,7 +98,7 @@ Use this checklist to ensure your admin dashboard is properly set up and working
 - [ ] Opened http://localhost:5173/admin/login
 - [ ] Login page loads correctly
 - [ ] Entered username: `admin`
-- [ ] Entered password: `KamutaAdmin2025!`
+- [ ] Entered password: `$2a$10$...`
 - [ ] Clicked Login button
 - [ ] Redirected to admin dashboard
 - [ ] No error messages
@@ -332,9 +332,9 @@ Once everything is checked and working:
 - [ ] Documentation reviewed
 - [ ] Ready for production use
 
-**Completed by:** ******\_\_\_******
-**Date:** ******\_\_\_******
-**Signature:** ******\_\_\_******
+**Completed by:** **\*\***\_\_\_**\*\***
+**Date:** **\*\***\_\_\_**\*\***
+**Signature:** **\*\***\_\_\_**\*\***
 
 ---
 
