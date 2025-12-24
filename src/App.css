@@ -771,13 +771,21 @@ footer {
 }
 
 .rating-stars .filled-star {
-  color: var(--accent-color);
+  color: #f39c12 !important;
   font-size: 1.5rem;
 }
 
 .rating-stars .empty-star {
-  color: #ddd;
+  color: #ddd !important;
   font-size: 1.5rem;
+}
+
+.dark-mode .rating-stars .filled-star {
+  color: #f39c12 !important;
+}
+
+.dark-mode .rating-stars .empty-star {
+  color: #555 !important;
 }
 
 .rating-text {
@@ -1009,16 +1017,25 @@ footer {
 .review-rating {
   display: flex;
   gap: 0.2rem;
+  align-items: center;
 }
 
 .review-rating .filled-star {
-  color: var(--accent-color);
+  color: #f39c12 !important;
   font-size: 1.2rem;
 }
 
 .review-rating .empty-star {
-  color: #ddd;
+  color: #ddd !important;
   font-size: 1.2rem;
+}
+
+.dark-mode .review-rating .filled-star {
+  color: #f39c12 !important;
+}
+
+.dark-mode .review-rating .empty-star {
+  color: #555 !important;
 }
 
 .review-content p {
