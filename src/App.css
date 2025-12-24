@@ -61,14 +61,16 @@ img {
 
 .dark-mode .form-group input,
 .dark-mode .form-group textarea {
-  background-color: #2a2a2a;
-  color: var(--text-color);
-  border-color: #444;
+  background-color: #2a2a2a !important;
+  color: #e0e0e0 !important;
+  border-color: #666 !important;
+  border-width: 2px !important;
 }
 
 .dark-mode .form-group input::placeholder,
 .dark-mode .form-group textarea::placeholder {
-  color: #888;
+  color: #999 !important;
+  opacity: 1 !important;
 }
 
 header {
@@ -536,15 +538,32 @@ header {
 .form-group textarea {
   width: 100%;
   padding: 1rem;
-  border: 1px solid #ddd;
+  border: 2px solid #ddd !important;
   border-radius: 5px;
   font-size: 1rem;
   transition: all 0.3s ease;
+  background-color: #ffffff !important;
+  color: #333 !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.form-group input {
+  height: auto !important;
+  min-height: 45px !important;
 }
 
 .form-group textarea {
-  height: 150px;
+  height: 150px !important;
+  min-height: 150px !important;
   resize: vertical;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #999 !important;
+  opacity: 1 !important;
 }
 
 .form-group input:hover,
