@@ -164,14 +164,19 @@ const Reviews = () => {
                 <div className="rating-input">
                   {[5, 4, 3, 2, 1].map((star) => (
                     <label key={star} className="star-label">
-                      <input
-                        type="radio"
-                        name="rating"
-                        value={star}
-                        checked={parseInt(formData.rating) === star}
-                        onChange={handleInputChange}
-                      />
-                      <i className="fas fa-star"></i>
+                      <i
+                        className="fas fa-star"
+                        onClick={() =>
+                          setFormData({ ...formData, rating: star })
+                        }
+                        style={{
+                          color:
+                            parseInt(formData.rating) >= star
+                              ? "#f39c12"
+                              : "#ddd",
+                          cursor: "pointer",
+                        }}
+                      ></i>
                     </label>
                   ))}
                 </div>
