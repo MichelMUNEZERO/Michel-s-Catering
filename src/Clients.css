@@ -154,9 +154,9 @@
   }
 
   .clients-section .card {
-    flex: 0 0 100%;
+    width: 180px;
     height: 250px;
-    padding: 0 5px;
+    flex-shrink: 0;
   }
 
   .clients-section .card-image {
@@ -169,6 +169,15 @@
   }
 
   .scroller {
-    animation: slide 12s linear infinite;
+    animation: slide 12s linear infinite !important;
+  }
+
+  @keyframes slide {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-200px * 6));
+    }
   }
 }
