@@ -1,6 +1,7 @@
 import React from "react";
+import { MdToggleOn, MdToggleOff } from "react-icons/md";
 
-const Footer = ({ toggleGallery }) => {
+const Footer = ({ toggleGallery, darkMode, toggleTheme }) => {
   const handleGalleryClick = (e) => {
     e.preventDefault();
     if (toggleGallery) {
@@ -119,6 +120,18 @@ const Footer = ({ toggleGallery }) => {
             <li>Monday - Friday: 8:00 AM - 6:00 PM</li>
             <li>Saturday: 9:00 AM - 5:00 PM</li>
             <li>Sunday: Closed</li>
+            <li
+              onClick={toggleTheme}
+              aria-label="Toggle dark mode"
+              role="button"
+              tabIndex={0}
+              onKeyPress={(e) => e.key === "Enter" && toggleTheme()}
+            >
+              Dark / Light Mode:{" "}
+              <span style={{ cursor: "pointer", fontSize: "1.5rem" }}>
+                {darkMode ? <MdToggleOn /> : <MdToggleOff />}
+              </span>
+            </li>
           </ul>
         </div>
       </div>

@@ -170,6 +170,48 @@
   transition: all 0.3s ease;
   text-align: left;
   width: 100%;
+  position: relative;
+}
+
+/* Tooltip for collapsed sidebar */
+.admin-sidebar.collapsed .nav-item::after {
+  content: attr(title);
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 15px;
+  padding: 8px 12px;
+  background: #2c3e50;
+  color: white;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.admin-sidebar.collapsed .nav-item::before {
+  content: "";
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 8px;
+  border: 6px solid transparent;
+  border-right-color: #2c3e50;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+}
+
+.admin-sidebar.collapsed .nav-item:hover::after,
+.admin-sidebar.collapsed .nav-item:hover::before {
+  opacity: 1;
 }
 
 .nav-item i {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoMenuSharp, IoCloseCircleOutline } from "react-icons/io5";
-import { CgDarkMode } from "react-icons/cg";
+import { MdToggleOn, MdToggleOff } from "react-icons/md";
 import { FaHome } from "react-icons/fa";
 import { FcAbout } from "react-icons/fc";
 import { RiTeamLine } from "react-icons/ri";
@@ -97,13 +97,6 @@ const Header = ({ toggleGallery, darkMode, toggleTheme }) => {
         </nav>
       </div>
       <div className="auth-nav">
-        <button
-          className="theme-toggle-btn"
-          onClick={toggleTheme}
-          aria-label="Toggle dark mode"
-        >
-          <CgDarkMode />
-        </button>
         <button
           className="mobile-menu-toggle"
           onClick={toggleMobileMenu}

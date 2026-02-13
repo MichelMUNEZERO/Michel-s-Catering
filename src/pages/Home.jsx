@@ -31,7 +31,11 @@ const Home = ({ darkMode, toggleTheme }) => {
       <Clients />
       {showGallery && <Gallery onClose={() => setShowGallery(false)} />}
       <Contact />
-      <Footer toggleGallery={toggleGallery} />
+      <Footer
+        toggleGallery={toggleGallery}
+        darkMode={darkMode}
+        toggleTheme={toggleTheme}
+      />
     </>
   );
 };
