@@ -57,10 +57,10 @@ const Footer = ({ toggleGallery, darkMode, toggleTheme }) => {
               <i className="fas fa-envelope"></i> fridamutesi@gmail.com
             </li>
             <li>
-              <i className="fas fa-phone"></i> +250788301848
+              <i className="fas fa-phone"></i> +250 788 301 848
             </li>
             <li>
-              <i className="fas fa-phone"></i> +250788309472
+              <i className="fas fa-phone"></i> +250 788 309 472
             </li>
             <li>
               <i className="fas fa-map-marker-alt"></i> Kigali, Rwanda

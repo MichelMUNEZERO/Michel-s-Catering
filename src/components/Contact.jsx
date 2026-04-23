@@ -39,12 +39,12 @@ const Contact = () => {
             Accept: "application/json",
           },
           body: JSON.stringify(emailData),
-        }
+        },
       );
 
       if (response.ok) {
         alert(
-          "✅ Message sent successfully to all team members! We'll get back to you soon."
+          "✅ Message sent successfully to all team members! We'll get back to you soon.",
         );
         setFormData({ name: "", email: "", subject: "", message: "" });
       } else {
@@ -53,7 +53,7 @@ const Contact = () => {
     } catch (error) {
       console.error("Contact form error:", error);
       alert(
-        "❌ Failed to send message. Please try WhatsApp or call us directly."
+        "❌ Failed to send message. Please try WhatsApp or call us directly.",
       );
     } finally {
       setIsSubmitting(false);
@@ -64,7 +64,7 @@ const Contact = () => {
     // WhatsApp number (use international format without + or spaces)
     const message = "Hello! I'm interested in your catering services.";
     const url = `https://api.whatsapp.com/send?phone=250788309472&text=${encodeURIComponent(
-      message
+      message,
     )}`;
 
     // Open WhatsApp
@@ -126,8 +126,8 @@ const Contact = () => {
           <div className="info-item">
             <i className="fas fa-phone"></i>
             <h3>Phone</h3>
-            <p>+250788301848</p>
-            <p>+250788309472</p>
+            <p>+250 788 301 848</p>
+            <p>+250 788 309 472</p>
           </div>
           <div className="info-item">
             <i className="fas fa-envelope"></i>
