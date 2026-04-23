@@ -89,15 +89,9 @@ const Footer = ({ toggleGallery, darkMode, toggleTheme }) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <i className="fab fa-twitter"></i>
+              <i className="fab fa-x-twitter"></i>
             </a>
-            <a
-              href="https://www.linkedin.com/company/kamuta-ltd/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i className="fab fa-linkedin-in"></i>
-            </a>
+
             <a
               href="https://wa.me/qr/CUQINPFSCEHSN1"
               target="_blank"
